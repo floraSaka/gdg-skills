@@ -320,6 +320,10 @@ select.tbsel{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spaci
 .lvrow{display:flex; align-items:center; gap:10px; margin:8px 0}
 .lvrow .lcode{flex:0 0 32px}
 .lvrow .levin{flex:1}
+.mtoday{font-size:12px; line-height:1.6; color:var(--ink-2); background:var(--surface); border:1px solid var(--rule);
+  border-left:3px solid var(--navy); border-radius:6px; padding:9px 12px; font-family:"IBM Plex Mono",monospace}
+.mtoday strong{color:var(--ink)}
+.mfootnote .stale{color:var(--amber)}
 </style>
 </head>
 <body>
@@ -408,6 +412,15 @@ function saveLocal(){
 function touchKey(skn,li){return skn+"|"+li}
 function touch(skn,li){(S.touched=S.touched||{})[touchKey(skn,li)]=Date.now()}
 function touchedAt(skn,li){return (S.touched&&S.touched[touchKey(skn,li)])||0}
+/* per-tap session log — additive, capped; rides along in the export for the coffee debrief */
+function logEntry(sk,sti,L,from,to){
+  S.log=S.log||[];
+  var en={t:Date.now(), n:sk.n, s:(sti>=0&&sk.steps[sti])?stepCode(sk.steps[sti].n):null, li:L, from:from, to:to};
+  S.log.push(en);
+  if(S.log.length>300) S.log=S.log.slice(-300);
+  return en;
+}
+function unlog(en){if(S.log){var i=S.log.lastIndexOf(en); if(i>-1) S.log.splice(i,1)}}
 function buzz(ms){try{if(navigator.vibrate) navigator.vibrate(ms||10)}catch(e){}}
 
 /* ---------- view dispatch ---------- */
@@ -875,6 +888,7 @@ function applyPick(){
   var note=p.querySelector("#pnote").value.trim();
   var skk=S.skills[cur.ski];
   var st= cur.sti<0 ? skk.direct : skk.steps[cur.sti];
+  if(st.v[cur.li]!==v) logEntry(skk,cur.sti,cur.li,st.v[cur.li],v);
   st.v[cur.li]=v;
   if(note) st.notes[String(cur.li)]=note; else delete st.notes[String(cur.li)];
   if(v!==0) skk.q[cur.li]=0;
@@ -910,7 +924,7 @@ function chipHTML(r){
   var v=e.v, badgeS=e.q?"q":v, nextV=(v===0?1:Math.min(5,v+1));
   var est=e.sti===-1?sk.direct:sk.steps[e.sti];
   var hasNote=!!(est&&est.notes&&est.notes[String(L)]);
-  var sub=stepped ? stepCode(sk.steps[e.sti].n)+' — '+esc(stepShort(sk.steps[e.sti].n)) : 'no steps — scored direct';
+  var sub=stepped ? stepCode(sk.steps[e.sti].n)+' — '+esc(stepShort(sk.steps[e.sti].n)) : 'no steps — one scale for the whole skill';
   var badge=badgeS==="q" ? "?" : (v>0 ? v+' '+stageName(v) : '·');
   return '<div class="mskill"><button class="mmain" type="button" data-ski="'+r.i+'" data-mode="adv">'
    +'<span class="mleft"><span class="mname">'+name+'</span><span class="msub">'+sub+'</span></span>'
@@ -937,13 +951,25 @@ function renderLog(keepScroll){
     h+='<p class="mmsg">No levels named yet for '+esc(S.dog)+' — name the places this dog trains, easiest first.<br>'
      +'<button class="tb" type="button" id="mlvbtn" style="margin-top:10px">Name '+esc(S.dog)+"'s levels</button></p>";
   }
+  var d0=new Date(); d0.setHours(0,0,0,0);
+  var today=(S.log||[]).filter(function(en){return en.t>=d0.getTime()&&levUsed(en.li)});
+  if(today.length){
+    var parts=today.slice(-5).map(function(en){
+      return esc(en.n)+(en.s?' '+en.s:'')+' → '+(en.to===-1?'n/a':(en.to===0?'–':en.to))+' ('+levCode(en.li)+')';
+    });
+    h+='<div class="mtoday"><strong>Today · '+today.length+' logged</strong><br>'+(today.length>5?'… ':'')+parts.join(' · ')+'</div>';
+  }
   if(!S.skills.length){
     h+='<p class="mmsg">No skills loaded for '+esc(S.dog)+' yet. Skill and step names only ever come from the documented exercise library — nothing is invented here. Import a matrix JSON via <strong>Data</strong>.</p>';
   }else if(used){
     h+='<div class="mlist" id="mlist">';
     skillOrder(ACT).forEach(function(r){h+=chipHTML(r)});
     h+='</div>';
-    h+='<p class="mfootnote">One tap on a skill logs one advance at '+esc(levName(ACT))+'. Hold a skill (or tap ⌄) for the full picker — any stage, N/A, or a note. Every tap can be undone for 5 seconds.</p>';
+    h+='<p class="mfootnote">One tap on a skill logs one advance at '+esc(levName(ACT))+'. Hold a skill (or tap ⌄) for the full picker — any stage, N/A, or a note. Every tap can be undone for 5 seconds.';
+    var lex=+(lsGet("lastExportTs."+S.dog)||0);
+    if(S._ts&&S._ts>lex&&(Date.now()-lex>7*864e5))
+      h+=' <span class="stale">This dog has changes never backed up'+(lex?' since '+esc(lsGet("lastExport."+S.dog)||''):'')+' — <strong>Data → Copy JSON</strong> to back up.</span>';
+    h+='</p>';
   }
   h+='</div>';
   document.getElementById("root").innerHTML=h;
@@ -994,10 +1020,12 @@ function tapAdvance(ski){
   var prev=st.v[L], prevQ=sk.q[L];
   var hadT=S.touched?S.touched[touchKey(sk.n,L)]:undefined;
   var nv = prev===0 ? 1 : Math.min(5,prev+1);
-  st.v[L]=nv; sk.q[L]=0; touch(sk.n,L); saveLocal(); buzz(10);
+  st.v[L]=nv; sk.q[L]=0; touch(sk.n,L);
+  var en=logEntry(sk,e.sti,L,prev,nv);
+  saveLocal(); buzz(10);
   var lbl=sk.n+(e.sti>=0?' '+stepCode(sk.steps[e.sti].n):'')+' → '+nv+' '+STAGES[nv]+' at '+levName(L);
   showUndo(lbl,function(){
-    st.v[L]=prev; sk.q[L]=prevQ;
+    st.v[L]=prev; sk.q[L]=prevQ; unlog(en);
     if(S.touched){if(hadT===undefined) delete S.touched[touchKey(sk.n,L)]; else S.touched[touchKey(sk.n,L)]=hadT}
     saveLocal(); if(VIEW==="log") renderLog(true); else repaint();
   });
@@ -1082,10 +1110,12 @@ function applySheet(ski,sti){
   st.v[L]=v;
   if(note) st.notes[String(L)]=note; else delete st.notes[String(L)];
   if(v!==0) sk.q[L]=0;
-  touch(sk.n,L); saveLocal(); buzz(10); closeSheet();
+  touch(sk.n,L);
+  var en=(v!==prev)?logEntry(sk,sti,L,prev,v):null;
+  saveLocal(); buzz(10); closeSheet();
   var lbl=sk.n+(sti>=0?' '+stepCode(sk.steps[sti].n):'')+' set to '+(v===-1?'n/a':(v===0?'blank':v+' '+STAGES[v]))+' at '+levName(L);
   showUndo(lbl,function(){
-    st.v[L]=prev; sk.q[L]=prevQ;
+    st.v[L]=prev; sk.q[L]=prevQ; if(en) unlog(en);
     if(prevNote===undefined) delete st.notes[String(L)]; else st.notes[String(L)]=prevNote;
     if(S.touched){if(hadT===undefined) delete S.touched[touchKey(sk.n,L)]; else S.touched[touchKey(sk.n,L)]=hadT}
     saveLocal(); if(VIEW==="log") renderLog(true); else repaint();
@@ -1137,7 +1167,7 @@ function openDataSheet(){
     var fallback=function(){els.sh.querySelector("#dimp").value=j; msg("Clipboard blocked — the JSON is in the box below; select all and copy.")};
     try{
       if(navigator.clipboard&&navigator.clipboard.writeText)
-        navigator.clipboard.writeText(j).then(function(){lsSet("lastExport."+S.dog,stamp()); msg("Copied — paste into the desktop matrix state block.")},fallback);
+        navigator.clipboard.writeText(j).then(function(){lsSet("lastExport."+S.dog,stamp()); lsSet("lastExportTs."+S.dog,String(Date.now())); msg("Copied — paste into the desktop matrix state block.")},fallback);
       else fallback();
     }catch(e){fallback()}
   };
@@ -1148,7 +1178,7 @@ function openDataSheet(){
       var a=document.createElement("a");
       a.href=URL.createObjectURL(blob); a.download=S.dog.toLowerCase()+"-skills-matrix.json";
       document.body.appendChild(a); a.click(); a.remove();
-      lsSet("lastExport."+S.dog,stamp());
+      lsSet("lastExport."+S.dog,stamp()); lsSet("lastExportTs."+S.dog,String(Date.now()));
       msg("Downloaded "+S.dog.toLowerCase()+"-skills-matrix.json");
     }catch(e){msg("Download failed — use Copy JSON instead.")}
   };
