@@ -316,6 +316,10 @@ select.tbsel{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spaci
   border-bottom:1px solid var(--rule)}
 @media (max-width:640px){.gbar{padding-left:16px; padding-right:16px}}
 .box.gen,.mbadge.gen{background:var(--gen); color:var(--geni)}
+.lch.lchedit{flex:0 0 40px; font-size:15px; color:var(--ink-3)}
+.lvrow{display:flex; align-items:center; gap:10px; margin:8px 0}
+.lvrow .lcode{flex:0 0 32px}
+.lvrow .levin{flex:1}
 </style>
 </head>
 <body>
@@ -612,14 +616,14 @@ function render(){
   }
   h+='</header>';
 
-  h+='<section><h2>The three axes</h2>';
+  var axes='<section><h2>The three axes</h2>';
   if(isH){
-    h+='<p class="lede">The grid is <strong>skill × level</strong>. Steps are <strong>collapsible sub-rows</strong> — Google Sheets does this natively with row groups, so it works in the real sheet too. Collapsed: 14 rows and the whole picture. Expanded: which step he\'s on in each place.</p>'
+    axes+='<p class="lede">The grid is <strong>skill × level</strong>. Steps are <strong>collapsible sub-rows</strong> — Google Sheets does this natively with row groups, so it works in the real sheet too. Collapsed: 14 rows and the whole picture. Expanded: which step he\'s on in each place.</p>'
      +'<p class="lede"><strong>Levels are now his own.</strong> L1–L5 are difficulty slots, easiest first, and each dog names them for the places they actually train — Harold\'s basketball court, Ailsa\'s garden. Up to five; leave one blank and it switches off. The trade-off: Harold\'s L3 and Ailsa\'s L3 are no longer the same thing, so the grid tracks <em>his</em> progression rather than comparing dogs. Worth it — you were never going to train Harold in Ailsa\'s garden.</p>';
   }else{
-    h+='<p class="lede">The grid is <strong>skill × level</strong>, with each skill\'s documented steps as collapsible sub-rows. L1–L5 are difficulty slots, easiest first — name them for the places this dog actually trains. Leave a name blank to switch that level off.</p>';
+    axes+='<p class="lede">The grid is <strong>skill × level</strong>, with each skill\'s documented steps as collapsible sub-rows. L1–L5 are difficulty slots, easiest first — name them for the places this dog actually trains. Leave a name blank to switch that level off.</p>';
   }
-  h+=scalesHTML()+'</section>';
+  axes+=scalesHTML()+'</section>';
 
   h+='<section><h2>The matrix</h2>'
    +'<p class="lede">Click a skill to open its steps, then <strong>click any step cell</strong> to set the stage and write a variation note. Skill-row cells are calculated — they update themselves.</p>'
@@ -632,6 +636,18 @@ function render(){
      +'<span class="ln">'+(levUsed(i)?esc(levName(i)):'not in use')+'</span></th>';
   }
   h+='</tr></thead><tbody id="grid"></tbody></table></div>';
+  var tal='', tot=0;
+  for(var ti=0;ti<5;ti++){
+    if(!levUsed(ti)) continue;
+    var c=0;
+    S.skills.forEach(function(sk){
+      if(!sk.steps.length){if(sk.direct.v[ti]>0)c++}
+      else sk.steps.forEach(function(st){if(st.v[ti]>0)c++});
+    });
+    tot+=c;
+    tal+='<span class="chip">'+levCode(ti)+' '+esc(levName(ti))+': <strong>'+c+'</strong></span>';
+  }
+  if(tal) h+='<div class="chips" style="margin-top:12px"><span class="chip">Scored cells</span>'+tal+'<span class="chip">total <strong>'+tot+'</strong></span></div>';
 
   if(isH){
     h+='<div class="stack" style="margin-top:6px"><div class="callout"><h3>What the grid says that the tracker can\'t</h3>'
@@ -640,6 +656,7 @@ function render(){
      +'<p>And with steps visible: <strong>Loose Lead Walking is stuck at Step 4 of 7</strong>, Give and Take are on Step 1 of 3. The distraction work that used to sit inside Recall now lives in <strong>Premack Recall</strong> — a 4-step doc never started, and the one that would actually hold up outdoors.</p></div></div>';
   }
   h+='</section>';
+  h+=axes;
 
   if(isH){
     h+='<section><h2>Flags &amp; audit findings</h2>'+flagsHTML()+'</section>';
@@ -891,11 +908,13 @@ function chipHTML(r){
      +'</span><span class="mright"><span class="box mbadge'+(proofed?' gen':'')+'"'+(proofed?'':' data-s="5"')+'>'+(proofed?'★ Generalised':'5 Fluent')+'</span></span></button>'+more+'</div>';
   }
   var v=e.v, badgeS=e.q?"q":v, nextV=(v===0?1:Math.min(5,v+1));
+  var est=e.sti===-1?sk.direct:sk.steps[e.sti];
+  var hasNote=!!(est&&est.notes&&est.notes[String(L)]);
   var sub=stepped ? stepCode(sk.steps[e.sti].n)+' — '+esc(stepShort(sk.steps[e.sti].n)) : 'no steps — scored direct';
   var badge=badgeS==="q" ? "?" : (v>0 ? v+' '+stageName(v) : '·');
   return '<div class="mskill"><button class="mmain" type="button" data-ski="'+r.i+'" data-mode="adv">'
    +'<span class="mleft"><span class="mname">'+name+'</span><span class="msub">'+sub+'</span></span>'
-   +'<span class="mright"><span class="box mbadge" data-s="'+badgeS+'">'+badge+'</span>'
+   +'<span class="mright"><span class="box mbadge'+(hasNote?' note':'')+'" data-s="'+badgeS+'">'+badge+'</span>'
    +'<span class="mnext">tap → '+nextV+' '+stageName(nextV)+'</span></span></button>'+more+'</div>';
 }
 function renderLog(keepScroll){
@@ -913,9 +932,10 @@ function renderLog(keepScroll){
       if(!levUsed(i)) continue;
       h+='<button class="lch" type="button" data-li="'+i+'" aria-pressed="'+(i===ACT)+'"><span class="c">'+levCode(i)+'</span><span class="n">'+esc(levName(i))+'</span></button>';
     }
-    h+='</div>';
+    h+='<button class="lch lchedit" type="button" id="mlv" aria-label="Edit level names">✎</button></div>';
   }else{
-    h+='<p class="mmsg">No levels named yet for '+esc(S.dog)+' — open the <strong>Grid</strong> view and name at least one level.</p>';
+    h+='<p class="mmsg">No levels named yet for '+esc(S.dog)+' — name the places this dog trains, easiest first.<br>'
+     +'<button class="tb" type="button" id="mlvbtn" style="margin-top:10px">Name '+esc(S.dog)+"'s levels</button></p>";
   }
   if(!S.skills.length){
     h+='<p class="mmsg">No skills loaded for '+esc(S.dog)+' yet. Skill and step names only ever come from the documented exercise library — nothing is invented here. Import a matrix JSON via <strong>Data</strong>.</p>';
@@ -935,8 +955,10 @@ function wireLog(){
   var ds=document.getElementById("dogsel"); if(ds) ds.onchange=function(){switchDog(this.value)};
   var tg=document.getElementById("toGrid"); if(tg) tg.onclick=function(){setView("matrix")};
   var md=document.getElementById("mdata"); if(md) md.onclick=openDataSheet;
-  var chips=document.querySelectorAll(".lch");
+  var chips=document.querySelectorAll(".lch:not(.lchedit)");
   for(var i=0;i<chips.length;i++) chips[i].onclick=function(){ACT=+this.dataset.li; renderLog(true)};
+  var lv1=document.getElementById("mlv"); if(lv1) lv1.onclick=openLevelsSheet;
+  var lv2=document.getElementById("mlvbtn"); if(lv2) lv2.onclick=openLevelsSheet;
   var mores=document.querySelectorAll(".mmore");
   for(i=0;i<mores.length;i++) mores[i].onclick=function(){openSheet(+this.dataset.ski)};
   var mains=document.querySelectorAll(".mmain");
@@ -1071,6 +1093,27 @@ function applySheet(ski,sti){
   if(VIEW==="log") renderLog(true); else repaint();
 }
 
+/* ---------- level naming (phone) ---------- */
+function openLevelsSheet(){
+  var els=sheetEls();
+  var h='<span class="pt">'+esc(S.dog)+'</span><div class="pn">Name the levels — easiest first</div>'
+   +'<p class="dnote">Real places this dog trains. Leave one blank to switch that level off.</p>';
+  for(var i=0;i<5;i++){
+    h+='<div class="lvrow"><span class="lcode">'+levCode(i)+'</span>'
+     +'<input class="levin" data-i="'+i+'" type="text" value="'+esc(S.levels[i]||"")+'" placeholder="not in use — name it to switch on"></div>';
+  }
+  h+='<div class="prow"><button class="tb" type="button" id="lvcancel">Cancel</button><button class="primary" type="button" id="lvsave" style="flex:2">Save levels</button></div>';
+  els.sh.innerHTML=h; els.sh.classList.add("on"); els.bg.classList.add("on");
+  els.sh.querySelector("#lvcancel").onclick=closeSheet;
+  els.sh.querySelector("#lvsave").onclick=function(){
+    var ins=els.sh.querySelectorAll(".levin");
+    for(var j=0;j<ins.length;j++) S.levels[+ins[j].dataset.i]=ins[j].value.trim();
+    saveLocal(); closeSheet();
+    if(!levUsed(ACT)) ACT=predictLevel();
+    if(VIEW==="log") renderLog(); else repaint();
+  };
+}
+
 /* ---------- export / import ---------- */
 function exportJSON(){return JSON.stringify(S).replace(/</g,"\\u003c")}
 function openDataSheet(){
@@ -1086,13 +1129,15 @@ function openDataSheet(){
    +'<p class="dnote" id="dmsg" role="status"></p>';
   els.sh.innerHTML=h; els.sh.classList.add("on"); els.bg.classList.add("on");
   var msg=function(t){els.sh.querySelector("#dmsg").textContent=t};
+  var le=lsGet("lastExport."+S.dog);
+  if(le) els.sh.querySelector("#dmsg").textContent="Last export for "+S.dog+": "+le;
   els.sh.querySelector("#dclose").onclick=closeSheet;
   els.sh.querySelector("#dcopy").onclick=function(){
     var j=exportJSON();
     var fallback=function(){els.sh.querySelector("#dimp").value=j; msg("Clipboard blocked — the JSON is in the box below; select all and copy.")};
     try{
       if(navigator.clipboard&&navigator.clipboard.writeText)
-        navigator.clipboard.writeText(j).then(function(){msg("Copied — paste into the desktop matrix state block.")},fallback);
+        navigator.clipboard.writeText(j).then(function(){lsSet("lastExport."+S.dog,stamp()); msg("Copied — paste into the desktop matrix state block.")},fallback);
       else fallback();
     }catch(e){fallback()}
   };
@@ -1103,6 +1148,7 @@ function openDataSheet(){
       var a=document.createElement("a");
       a.href=URL.createObjectURL(blob); a.download=S.dog.toLowerCase()+"-skills-matrix.json";
       document.body.appendChild(a); a.click(); a.remove();
+      lsSet("lastExport."+S.dog,stamp());
       msg("Downloaded "+S.dog.toLowerCase()+"-skills-matrix.json");
     }catch(e){msg("Download failed — use Copy JSON instead.")}
   };
@@ -1209,7 +1255,24 @@ if(HOSTED){
     .catch(function(){ savebar() });
 }
 if("serviceWorker" in navigator && (location.protocol==="https:"||location.hostname==="localhost"||location.hostname==="127.0.0.1")){
-  try{ navigator.serviceWorker.register("./sw.js").catch(function(){}) }catch(e){}
+  try{
+    navigator.serviceWorker.register("./sw.js").then(function(reg){
+      if(!navigator.serviceWorker.controller) return;   /* first install — nothing to update */
+      reg.addEventListener("updatefound",function(){
+        var nw=reg.installing;
+        if(nw) nw.addEventListener("statechange",function(){
+          if(nw.state==="activated"){
+            var u=undoEl();
+            clearTimeout(undoTimer);
+            u.innerHTML='<span class="ul">App updated</span><button type="button" id="undobtn">Reload</button>';
+            u.classList.add("on");
+            document.getElementById("undobtn").onclick=function(){location.reload()};
+            undoTimer=setTimeout(function(){u.classList.remove("on")},20000);
+          }
+        });
+      });
+    }).catch(function(){});
+  }catch(e){}
 }
 })();
 </script>
