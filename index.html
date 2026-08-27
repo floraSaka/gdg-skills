@@ -241,8 +241,8 @@ select.tbsel{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spaci
 .dsel{font-family:Archivo,system-ui,sans-serif; font-size:18px; font-weight:700; color:var(--ink);
   background:var(--surface); border:1px solid var(--rule-strong); border-radius:4px; padding:9px 10px; max-width:190px}
 .mhead .tb{padding:10px 13px}
-.levrow{position:sticky; top:0; z-index:20; background:var(--ground); display:flex; gap:6px;
-  padding:10px 0; padding-top:calc(10px + env(safe-area-inset-top)); margin-top:calc(-1 * env(safe-area-inset-top))}
+.sabg{position:fixed; top:0; left:0; right:0; height:env(safe-area-inset-top); background:var(--ground); z-index:25}
+.levrow{position:sticky; top:env(safe-area-inset-top); z-index:20; background:var(--ground); display:flex; gap:6px; padding:10px 0}
 .lch{flex:1; min-height:54px; border:1px solid var(--rule-strong); border-radius:5px; background:var(--surface);
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; padding:5px 2px;
   cursor:pointer; touch-action:manipulation}
@@ -852,7 +852,7 @@ function renderLog(keepScroll){
   var sy=window.scrollY;
   if(!levUsed(ACT)) ACT=predictLevel();
   var used=levCount();
-  var h='<div class="mob">';
+  var h='<div class="mob"><div class="sabg"></div>';
   h+='<header class="mhead"><select id="dogsel" class="dsel" aria-label="Dog">'+dogOptions()+'</select>'
    +'<span style="flex:1"></span>'
    +'<button class="tb" id="mdata" type="button">Data</button>'
