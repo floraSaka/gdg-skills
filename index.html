@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#18377A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GDG">
+<title>GDG Skills</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icon-180.png">
+<link rel="icon" type="image/png" href="./icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style id="css">
+:root{
+  --ground:#FBFAF7; --surface:#FFFFFF; --surface-2:#F4F3EE; --surface-3:#F8F7F3;
+  --ink:#14181F; --ink-2:#4A5262; --ink-3:#7C8496;
+  --rule:#E2E0D8; --rule-strong:#CFCCC1;
+  --navy:#18377A; --navy-soft:#3556A0;
+  --amber:#8F5806; --amber-bg:#FAEDD6; --amber-rule:#E0C289; --amber-cell:#F2D9A6;
+  --green:#1E6B4E; --green-bg:#DFF0E7; --green-rule:#A8CFBC;
+  --carry:#DDE5F4; --carry-2:#EDF1FA;
+  --na:#E3E0D5; --nai:#87836F; --nah:#D0CBB9;
+  --s0:#EBEAE3; --s0i:#9A9A90;
+  --s1:#DDE5F4; --s1i:#1B2436;
+  --s2:#B6C7E6; --s2i:#16203A;
+  --s3:#89A4D4; --s3i:#101B33;
+  --s4:#547ABD; --s4i:#FFFFFF;
+  --s5:#2C539E; --s5i:#FFFFFF;
+  --s6:#18377A; --s6i:#FFFFFF;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0E1117; --surface:#151922; --surface-2:#1B202B; --surface-3:#191E28;
+  --ink:#E9ECF2; --ink-2:#A3ADBF; --ink-3:#79839A;
+  --rule:#262C38; --rule-strong:#374050;
+  --navy:#A0BEF2; --navy-soft:#7099E0;
+  --amber:#EEBC70; --amber-bg:#2A2113; --amber-rule:#4C3B1D; --amber-cell:#5A4520;
+  --green:#7FCCA6; --green-bg:#132A20; --green-rule:#274A38;
+  --carry:#232F4A; --carry-2:#1A2033;
+  --na:#1C2028; --nai:#697285; --nah:#262B35;
+  --s0:#191D26; --s0i:#5A6274;
+  --s1:#1F2B45; --s1i:#93A6C8;
+  --s2:#273C68; --s2i:#B4C4E2;
+  --s3:#325295; --s3i:#DCE5F6;
+  --s4:#4A75C6; --s4i:#0B0F16;
+  --s5:#7099E0; --s5i:#0B0F16;
+  --s6:#A0BEF2; --s6i:#0B0F16;
+}}
+:root[data-theme="dark"]{
+  --ground:#0E1117; --surface:#151922; --surface-2:#1B202B; --surface-3:#191E28;
+  --ink:#E9ECF2; --ink-2:#A3ADBF; --ink-3:#79839A;
+  --rule:#262C38; --rule-strong:#374050;
+  --navy:#A0BEF2; --navy-soft:#7099E0;
+  --amber:#EEBC70; --amber-bg:#2A2113; --amber-rule:#4C3B1D; --amber-cell:#5A4520;
+  --green:#7FCCA6; --green-bg:#132A20; --green-rule:#274A38;
+  --carry:#232F4A; --carry-2:#1A2033;
+  --na:#1C2028; --nai:#697285; --nah:#262B35;
+  --s0:#191D26; --s0i:#5A6274;
+  --s1:#1F2B45; --s1i:#93A6C8;
+  --s2:#273C68; --s2i:#B4C4E2;
+  --s3:#325295; --s3i:#DCE5F6;
+  --s4:#4A75C6; --s4i:#0B0F16;
+  --s5:#7099E0; --s5i:#0B0F16;
+  --s6:#A0BEF2; --s6i:#0B0F16;
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--ground); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif; font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px; margin:0 auto; padding:40px 28px 110px; display:flex; flex-direction:column; gap:44px}
+h1,h2,h3{font-family:Archivo,system-ui,sans-serif; text-wrap:balance; margin:0}
+.masthead{display:flex; flex-direction:column; gap:14px; border-bottom:2px solid var(--navy); padding-bottom:22px}
+.eyebrow{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3)}
+h1{font-size:clamp(30px,4.6vw,42px); font-weight:700; letter-spacing:-.02em; line-height:1.08}
+.sub{color:var(--ink-2); max-width:68ch; font-size:15.5px; margin:0}
+.sub strong{color:var(--ink)}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:2px}
+.chip{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.05em; text-transform:uppercase;
+  padding:4px 10px; border:1px solid var(--rule-strong); border-radius:2px; color:var(--ink-2); background:var(--surface)}
+.chip.warn{background:var(--amber-bg); border-color:var(--amber-rule); color:var(--amber)}
+section{display:flex; flex-direction:column; gap:18px}
+h2{font-size:12px; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--ink-3);
+   font-family:"IBM Plex Mono",monospace; padding-bottom:8px; border-bottom:1px solid var(--rule)}
+.lede{color:var(--ink-2); max-width:74ch; margin:0}
+.lede strong{color:var(--ink)}
+.scales{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px}
+.scalecard{background:var(--surface); border:1px solid var(--rule); border-radius:3px; padding:20px 20px 10px}
+.scalecard h3{font-size:15px; font-weight:600; margin-bottom:4px}
+.scalecard .note{font-size:13px; color:var(--ink-3); margin:0 0 14px}
+.srow{display:grid; grid-template-columns:32px 1fr; gap:12px; align-items:start; padding:9px 0; border-top:1px solid var(--rule)}
+.srow:first-of-type{border-top:none}
+.swatch{width:32px; height:30px; border-radius:2px; display:grid; place-items:center;
+  font-family:"IBM Plex Mono",monospace; font-size:13px; font-weight:600}
+.lcode{width:32px; height:30px; border-radius:2px; display:grid; place-items:center; background:var(--surface-2);
+  border:1px solid var(--rule-strong); font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:600; color:var(--ink-2)}
+.sname{font-weight:600; font-size:14px}
+.sdesc{font-size:13.5px; color:var(--ink-2); line-height:1.5}
+.sdesc em{color:var(--ink-3); font-style:italic}
+.hatch{background:var(--carry-2); background-image:repeating-linear-gradient(135deg,transparent 0 4px,var(--carry) 4px 6px)}
+.naSw{background:var(--na); background-image:repeating-linear-gradient(45deg,transparent 0 5px,var(--nah) 5px 6px); color:var(--nai); font-size:10px}
+input.levin{width:100%; font:inherit; font-size:13.5px; color:var(--ink); background:var(--ground);
+  border:1px solid var(--rule-strong); border-radius:2px; padding:5px 8px}
+input.levin::placeholder{color:var(--ink-3); font-style:italic; font-size:12.5px}
+input.levin:focus{outline:2px solid var(--navy-soft); outline-offset:-1px}
+th.h-loc.off .lv{color:var(--ink-3)}
+th.h-loc.off .ln{font-style:italic}
+td.cell.off{background:var(--surface-2)!important; opacity:.4}
+td.cell.off .box{background:transparent!important; background-image:none!important}
+.qc{background:var(--amber-cell); color:var(--amber)}
+.toolbar{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+button.tb{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  background:var(--surface); color:var(--ink-2); border:1px solid var(--rule-strong); border-radius:2px;
+  padding:7px 13px; cursor:pointer}
+button.tb:hover{border-color:var(--navy-soft); color:var(--ink)}
+button.tb:focus-visible{outline:2px solid var(--navy-soft); outline-offset:2px}
+button.tb[disabled]{opacity:.45; cursor:default}
+.hint{font-size:12.5px; color:var(--ink-3); margin-left:auto}
+.matrixwrap{border:1px solid var(--rule); border-radius:3px; background:var(--surface); overflow-x:auto}
+table{border-collapse:separate; border-spacing:0; width:100%; min-width:760px}
+th,td{text-align:left; padding:0}
+thead th{position:sticky; top:0; z-index:5; background:var(--surface); border-bottom:1px solid var(--rule-strong)}
+.h-skill{min-width:340px; width:340px; position:sticky; left:0; z-index:6; background:var(--surface);
+  border-right:1px solid var(--rule-strong); padding:12px 16px;
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); font-weight:500}
+.h-loc{padding:10px 6px 12px; text-align:center; min-width:92px}
+.h-loc .lv{font-family:"IBM Plex Mono",monospace; font-size:13px; font-weight:600; color:var(--navy); display:block}
+.h-loc .ln{font-size:11px; color:var(--ink-3); line-height:1.35; display:block; margin-top:3px; font-weight:400}
+tr.cat td{background:var(--surface-2); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule)}
+tr.cat td.catname{position:sticky; left:0; z-index:3; background:var(--surface-2); border-right:1px solid var(--rule-strong);
+  padding:6px 16px; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-2); font-weight:600}
+.skillcell{position:sticky; left:0; z-index:3; background:var(--surface); border-right:1px solid var(--rule-strong);
+  border-top:1px solid var(--rule); padding:0}
+.disc{width:100%; display:flex; align-items:center; gap:9px; background:none; border:none; text-align:left;
+  padding:10px 16px; cursor:pointer; font:inherit; font-size:13.5px; line-height:1.35; color:var(--ink)}
+.disc:hover{background:var(--surface-3)}
+.disc:focus-visible{outline:2px solid var(--navy-soft); outline-offset:-2px}
+.tri{flex:0 0 auto; width:9px; color:var(--ink-3); font-size:9px; transition:transform .13s}
+tr.open .tri{transform:rotate(90deg)}
+.stepcount{margin-left:auto; flex:0 0 auto; font-family:"IBM Plex Mono",monospace; font-size:10px; color:var(--ink-3);
+  border:1px solid var(--rule); border-radius:2px; padding:1px 5px; white-space:nowrap}
+tr.step .skillcell{background:var(--surface-3); padding:7px 16px 7px 38px; font-size:12.5px; color:var(--ink-2);
+  font-family:"IBM Plex Mono",monospace}
+tr.step .skillcell .sn{color:var(--navy); font-weight:600; margin-right:7px}
+tr.step td.cell{background:var(--surface-3)}
+tr.step{display:none}
+tr.step.show{display:table-row}
+td.cell{border-top:1px solid var(--rule); border-left:1px solid var(--rule); padding:3px}
+.box{width:100%; height:36px; border:none; border-radius:2px; position:relative; display:grid; place-items:center;
+  font-family:"IBM Plex Mono",monospace; font-size:13px; font-weight:600; background:var(--s0); color:var(--s0i);
+  padding:0; font-family:"IBM Plex Mono",monospace}
+tr.step .box{height:26px; font-size:11.5px; cursor:pointer}
+.box[data-s="1"]{background:var(--s1); color:var(--s1i)}
+.box[data-s="2"]{background:var(--s2); color:var(--s2i)}
+.box[data-s="3"]{background:var(--s3); color:var(--s3i)}
+.box[data-s="4"]{background:var(--s4); color:var(--s4i)}
+.box[data-s="5"]{background:var(--s5); color:var(--s5i)}
+.box[data-s="6"]{background:var(--s6); color:var(--s6i)}
+.box[data-s="c"]{background:var(--carry-2); background-image:repeating-linear-gradient(135deg,transparent 0 4px,var(--carry) 4px 6px); color:var(--ink-3)}
+.box[data-s="q"]{background:var(--amber-cell); color:var(--amber)}
+.box[data-s="na"]{background:var(--na); background-image:repeating-linear-gradient(45deg,transparent 0 5px,var(--nah) 5px 6px);
+  color:var(--nai); font-size:10px; letter-spacing:.03em}
+tr.step .box[data-s="na"]{font-size:9px}
+.opt[data-v="-1"]{background:var(--na); background-image:repeating-linear-gradient(45deg,transparent 0 5px,var(--nah) 5px 6px);
+  color:var(--nai); font-size:10px}
+.opts{grid-template-columns:repeat(8,1fr)}
+.box.note::after{content:""; position:absolute; top:3px; right:3px; width:0; height:0;
+  border-top:6px solid currentColor; border-left:6px solid transparent; opacity:.6}
+.box.dirty{box-shadow:inset 0 0 0 2px var(--green)}
+.box:hover,.box:focus-visible{outline:2px solid var(--ink); outline-offset:-2px}
+.box:focus-visible{outline-color:var(--navy-soft)}
+#tip{position:fixed; z-index:60; max-width:300px; background:var(--surface); color:var(--ink);
+  border:1px solid var(--rule-strong); border-radius:3px; padding:11px 13px; font-size:13px; line-height:1.5;
+  box-shadow:0 8px 26px rgba(10,14,22,.18); pointer-events:none; opacity:0; transition:opacity .1s}
+#tip.on{opacity:1}
+#tip .tt{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); display:block; margin-bottom:4px}
+#tip .ts{font-weight:600; display:block; margin-bottom:5px}
+#pick{position:fixed; z-index:70; width:290px; background:var(--surface); border:1px solid var(--rule-strong);
+  border-radius:3px; box-shadow:0 12px 34px rgba(10,14,22,.22); padding:14px; display:none}
+#pick.on{display:block}
+#pick .pt{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
+#pick .pn{font-weight:600; font-size:13.5px; margin:3px 0 11px; line-height:1.35}
+.opts{display:grid; grid-template-columns:repeat(7,1fr); gap:4px; margin-bottom:11px}
+.opt{height:34px; border:1px solid var(--rule); border-radius:2px; cursor:pointer; font-family:"IBM Plex Mono",monospace;
+  font-size:12px; font-weight:600; display:grid; place-items:center; background:var(--s0); color:var(--s0i)}
+.opt[data-v="1"]{background:var(--s1);color:var(--s1i)} .opt[data-v="2"]{background:var(--s2);color:var(--s2i)}
+.opt[data-v="3"]{background:var(--s3);color:var(--s3i)} .opt[data-v="4"]{background:var(--s4);color:var(--s4i)}
+.opt[data-v="5"]{background:var(--s5);color:var(--s5i)} .opt[data-v="6"]{background:var(--s6);color:var(--s6i)}
+.opt[aria-pressed="true"]{outline:2px solid var(--ink); outline-offset:1px}
+#pick label{display:block; font-size:11px; font-family:"IBM Plex Mono",monospace; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--ink-3); margin-bottom:5px}
+#pick textarea{width:100%; min-height:66px; resize:vertical; font:inherit; font-size:13px; color:var(--ink);
+  background:var(--ground); border:1px solid var(--rule-strong); border-radius:2px; padding:8px 9px}
+#pick textarea:focus{outline:2px solid var(--navy-soft); outline-offset:-1px}
+.prow{display:flex; gap:8px; margin-top:11px}
+.prow button{flex:1}
+#savebar{position:fixed; left:0; right:0; bottom:0; z-index:50; background:var(--surface);
+  border-top:1px solid var(--rule-strong); padding:11px 22px; display:flex; align-items:center; gap:14px;
+  box-shadow:0 -6px 22px rgba(10,14,22,.08)}
+#savebar .st{font-size:13px; color:var(--ink-2); flex:1}
+#savebar .st b{color:var(--ink)}
+#savebar .badge{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+  padding:3px 8px; border-radius:2px; border:1px solid var(--rule-strong); color:var(--ink-3)}
+#savebar .badge.ok{background:var(--green-bg); border-color:var(--green-rule); color:var(--green)}
+#savebar .badge.dirty{background:var(--amber-bg); border-color:var(--amber-rule); color:var(--amber)}
+button.primary{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  background:var(--navy); color:var(--surface); border:1px solid var(--navy); border-radius:2px; padding:9px 18px; cursor:pointer}
+:root[data-theme="dark"] button.primary,:root:not([data-theme="light"]) button.primary{color:#0B0F16}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) button.primary{color:#FFF}}
+button.primary[disabled]{opacity:.4; cursor:default}
+.callout{background:var(--surface); border:1px solid var(--rule); border-left:3px solid var(--navy); border-radius:2px; padding:16px 20px}
+.callout.amber{border-left-color:var(--amber); background:var(--amber-bg); border-color:var(--amber-rule)}
+.callout.green{border-left-color:var(--green); background:var(--green-bg); border-color:var(--green-rule)}
+.callout h3{font-size:14.5px; font-weight:600; margin-bottom:6px}
+.callout p{margin:0 0 8px; font-size:14px; color:var(--ink-2)}
+.callout p:last-child{margin-bottom:0}
+.stack{display:flex; flex-direction:column; gap:12px}
+.speclist{background:var(--surface); border:1px solid var(--rule); border-radius:3px}
+.spec{display:grid; grid-template-columns:158px 1fr; gap:18px; padding:14px 20px; border-top:1px solid var(--rule)}
+.spec:first-child{border-top:none}
+.spec dt{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); padding-top:2px}
+.spec dd{margin:0; font-size:14px; color:var(--ink-2)}
+.spec dd strong{color:var(--ink); font-weight:600}
+.footnote{font-size:13px; color:var(--ink-3); max-width:74ch}
+@media (max-width:640px){
+  .wrap{padding:28px 16px 110px; gap:34px}
+  .spec{grid-template-columns:1fr; gap:5px}
+  .h-skill,.skillcell{min-width:220px; width:220px}
+  #savebar{padding:10px 14px; gap:9px} #savebar .st{font-size:12px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* ---------- PWA / mobile one-tap log view ---------- */
+body{padding-left:env(safe-area-inset-left); padding-right:env(safe-area-inset-right)}
+select.tbsel{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  background:var(--surface); color:var(--ink-2); border:1px solid var(--rule-strong); border-radius:2px; padding:6px 8px}
+.mob{max-width:640px; margin:0 auto; padding:8px 14px calc(96px + env(safe-area-inset-bottom));
+  display:flex; flex-direction:column; gap:12px}
+.mhead{display:flex; align-items:center; gap:8px; padding-top:calc(8px + env(safe-area-inset-top))}
+.dsel{font-family:Archivo,system-ui,sans-serif; font-size:18px; font-weight:700; color:var(--ink);
+  background:var(--surface); border:1px solid var(--rule-strong); border-radius:4px; padding:9px 10px; max-width:190px}
+.mhead .tb{padding:10px 13px}
+.levrow{position:sticky; top:0; z-index:20; background:var(--ground); display:flex; gap:6px;
+  padding:10px 0; padding-top:calc(10px + env(safe-area-inset-top)); margin-top:calc(-1 * env(safe-area-inset-top))}
+.lch{flex:1; min-height:54px; border:1px solid var(--rule-strong); border-radius:5px; background:var(--surface);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; padding:5px 2px;
+  cursor:pointer; touch-action:manipulation}
+.lch .c{font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:600; color:var(--ink-3)}
+.lch .n{font-size:10px; color:var(--ink-2); text-align:center; line-height:1.15; overflow-wrap:anywhere}
+.lch[aria-pressed="true"]{background:var(--s6); border-color:var(--s6)}
+.lch[aria-pressed="true"] .c,.lch[aria-pressed="true"] .n{color:var(--s6i)}
+.mlist{display:flex; flex-direction:column; gap:9px}
+.mskill{display:flex; align-items:stretch; background:var(--surface); border:1px solid var(--rule);
+  border-radius:8px; overflow:hidden; -webkit-touch-callout:none; -webkit-user-select:none; user-select:none}
+.mmain{flex:1; display:flex; align-items:center; gap:12px; padding:12px 10px 12px 14px; min-height:68px;
+  background:none; border:none; text-align:left; font:inherit; color:var(--ink); cursor:pointer; touch-action:manipulation; min-width:0}
+.mmain:active{background:var(--surface-3)}
+.mleft{flex:1; display:flex; flex-direction:column; gap:2px; min-width:0}
+.mname{font-weight:600; font-size:15.5px; line-height:1.25}
+.msub{font-size:12px; color:var(--ink-2); font-family:"IBM Plex Mono",monospace; line-height:1.35}
+.mgo{margin-top:2px; font-size:12.5px; color:var(--navy); font-weight:600; font-family:"IBM Plex Mono",monospace; padding:5px 0}
+.mright{display:flex; flex-direction:column; align-items:flex-end; gap:3px; flex:0 0 auto}
+.box.mbadge{width:auto; min-width:58px; height:40px; font-size:12.5px; padding:0 10px; border-radius:4px; white-space:nowrap}
+.mnext{font-size:10.5px; color:var(--ink-3); font-family:"IBM Plex Mono",monospace; white-space:nowrap}
+.mmore{flex:0 0 48px; border:none; border-left:1px solid var(--rule); background:var(--surface-2);
+  color:var(--ink-3); font-size:15px; cursor:pointer; touch-action:manipulation}
+.mmore:active{background:var(--surface-3)}
+.mskill.na .mmain{opacity:.55}
+.mmsg{color:var(--ink-2); font-size:14px; background:var(--surface); border:1px solid var(--rule); border-radius:6px; padding:14px; margin:0}
+.mfootnote{font-size:12.5px; color:var(--ink-3); margin:2px 2px 0}
+#undo{position:fixed; left:12px; right:12px; bottom:calc(14px + env(safe-area-inset-bottom)); z-index:95;
+  background:var(--ink); color:var(--ground); border-radius:8px; padding:10px 10px 10px 16px;
+  display:none; align-items:center; gap:10px; font-size:14px; box-shadow:0 8px 26px rgba(10,14,22,.35)}
+#undo.on{display:flex}
+#undo .ul{flex:1; line-height:1.35}
+#undo button{background:none; border:1px solid currentColor; color:inherit; border-radius:5px;
+  font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+  padding:10px 18px; cursor:pointer; touch-action:manipulation}
+#sheetbg{position:fixed; inset:0; z-index:88; background:rgba(10,14,22,.45); display:none}
+#sheetbg.on{display:block}
+#sheet{position:fixed; left:0; right:0; bottom:0; z-index:90; background:var(--surface);
+  border-top:1px solid var(--rule-strong); border-radius:14px 14px 0 0;
+  padding:18px 16px calc(18px + env(safe-area-inset-bottom)); display:none; max-height:84vh; overflow:auto;
+  box-shadow:0 -12px 34px rgba(10,14,22,.3)}
+#sheet.on{display:block}
+#sheet .pt{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
+#sheet .pn{font-weight:600; font-size:15px; margin:3px 0 6px; line-height:1.35}
+#sheet label{display:block; font-size:11px; font-family:"IBM Plex Mono",monospace; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--ink-3); margin:12px 0 5px}
+#sheet textarea{width:100%; min-height:64px; resize:vertical; font:inherit; font-size:13px; color:var(--ink);
+  background:var(--ground); border:1px solid var(--rule-strong); border-radius:2px; padding:8px 9px}
+#sheet textarea:focus{outline:2px solid var(--navy-soft); outline-offset:-1px}
+#sheet .prow{margin-top:13px}
+#sheet .prow .tb,#sheet .prow .primary{padding-top:12px; padding-bottom:12px}
+.steptabs{display:flex; gap:6px; overflow-x:auto; margin:10px 0 6px; padding-bottom:2px}
+.stab{flex:0 0 auto; display:flex; align-items:center; gap:6px; border:1px solid var(--rule-strong);
+  background:var(--surface-2); border-radius:4px; padding:8px 9px; font-family:"IBM Plex Mono",monospace;
+  font-size:12px; color:var(--ink-2); cursor:pointer; touch-action:manipulation}
+.stab.cur{border-color:var(--navy); color:var(--ink); outline:2px solid var(--navy-soft); outline-offset:-1px}
+.stab .sv{width:28px; height:22px; font-size:10px}
+.stepname{font-size:13px; color:var(--ink-2); font-family:"IBM Plex Mono",monospace; margin:0 0 4px}
+.opts.sheetopts{grid-template-columns:repeat(4,1fr); gap:8px; margin:8px 0 0}
+.opt.big{height:56px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+  font-size:16px; touch-action:manipulation}
+.opt.big .ol{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:9.5px; font-weight:500; letter-spacing:.02em}
+.dnote{font-size:12.5px; color:var(--ink-2); margin:8px 0 0; line-height:1.5}
+.dnote code{font-family:"IBM Plex Mono",monospace; font-size:11px}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<div id="tip" role="tooltip"></div>
+<div id="pick" role="dialog" aria-label="Set proficiency"></div>
+
+<script id="state" type="application/json">
+{"dog": "Harold", "savedAt": "27 Aug 2026, 17:38", "levels": ["Inside Flat", "The Balcony", "Gated Pen", "Basketball Court", "Street walks"], "skills": [{"cat": "Markers & Foundation", "n": "Markers", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 — Marker Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 — Wait for a Response", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 — Mark a Sit", "v": [6, 6, 6, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Hand Touch", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 — Luring", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 — No Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 — Adding the Cue", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 — Raising Criteria", "v": [5, -1, 4, 0, 0], "notes": {"1": "N/A due to no off-lead"}}]}, {"cat": "Markers & Foundation", "n": "Eye Contact Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 — Follow and Treat", "v": [0, 6, 0, 0, 0], "notes": {}}, {"n": "Step 2 — Wait for the Look", "v": [5, 3, 3, 0, 0], "notes": {"0": "19 Aug — run with Aram out of the room. Started anxious, finished strong. (Aram out is a variation, not a step.)"}}]}, {"cat": "Dog Games", "n": "Find It", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 — Easy Finds", "v": [4, 4, 2, 0, 0], "notes": {"2": "Gated pen, 3 Jul. Loves sniffing — the easy win outdoors."}}, {"n": "Step 2 — Raise the Difficulty", "v": [4, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Dog Games", "n": "Snuffle Rolls", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 — Roll and Snuffle", "v": [5, 0, 1, 0, 0], "notes": {"2": "Introduced during the outdoor pen session, 3 Jul."}}]}, {"cat": "Settle", "n": "Settle on a Mat", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 — Settle on the Mat", "v": [4, 2, 0, 0, 0], "notes": {"1": "Balcony — went back to not switching off here. Clear regression from indoors."}}, {"n": "Step 2 — Place Mat Near a Chair", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 — Outside With a Chair", "v": [4, 3, 3, 0, 0], "notes": {"2": "Gated pen, 3 Jul — testing settle at distance outdoors."}}]}, {"cat": "Settle", "n": "Capturing Settle Around The House", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 — Capture the Calm", "v": [5, 4, 0, 0, 0], "notes": {}}]}, {"cat": "Separation Anxiety", "n": "Flitting Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 — Start Flitting", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 — Not Following Might Pay Off", "v": [3, 2, 2, 0, 0], "notes": {}}, {"n": "Step 3 — Proofing", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Impulse Control", "n": "Impulse Control — To Have a Treat You Must Leave a Treat", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 — The Closed Fist", "v": [2, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 — Raise the Difficulty", "v": [0, 0, 0, 0, 0], "notes": {"0": "Short reps only — frustrating for dogs if held too long."}}]}, {"cat": "Recall", "n": "Recall", "q": [0, 0, 0, 0, 0], "steps": [], "direct": {"v": [4, 3, 3, 2, 0], "notes": {"0": "No treat in sight. Reward only once he has fully arrived and you've said 'yes'.", "2": "In the pen. Watch him sticking with one person and not moving — needs a kissy noise or a second recall.", "3": "Semi-enclosed area, 24 Jul — has an entry/exit, not fully fenced. Had almost chased a cat here previously."}}}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Full Progression", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 — Treat on the Floor", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 — Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 — Eye Contact + Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 — Backwards Walking", "v": [3, 2, 0, 0, 0], "notes": {"0": "Hold here to build smoothness before Step 5.", "1": "Balcony/terrace, 10 Aug. Very good with a few little stops. Lead on because he has to be on one out there — likely just dragging, so still Step 4, not Step 6."}}, {"n": "Step 5 — Forward Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 — Backwards Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {"1": "Lead deliberately in the hand, not dragging — that's what makes it Step 6."}}, {"n": "Step 7 — Forward Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap · Give · Take", "n": "Swap", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 — Pairing", "v": [4, 0, 3, 0, 0], "notes": {"2": "Outside, 10 Aug — food thrown away from Harold. Went well, good to be away from the kitchen. ⚠ was this the balcony (L2) or the gated pen (L3)?"}}, {"n": "Step 2 — Swap for a Toy", "v": [2, 0, 0, 0, 0], "notes": {"0": "31 Jul — rabbit ears and a high-value chew. Released only when the treat was out of sight, so criteria eased. Also worked with the Clam, 10 Aug."}}]}, {"cat": "Swap · Give · Take", "n": "Give", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 — The Release", "v": [2, 0, 0, 0, 0], "notes": {"0": "Flora only. One growl 18 Aug, worked through. Don't push Aram past a growl."}}, {"n": "Step 2 — No Hands", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 — The Game Becomes the Reward", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap · Give · Take", "n": "Take", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 — Take on Cue", "v": [1, 0, 0, 0, 0], "notes": {"0": "New 18 Aug — building the retrieve chain: Swap → Give → Take → Fetch."}}, {"n": "Step 2 — 'Take' as a Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 — With the Flirt Pole", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}
+</script>
+
+<script id="app">
+(function(){
+"use strict";
+var STAGES=["Not yet tested","Introduced","Learning","Progressing","Reliable","Fluent","Proofed"];
+var DOGS=["Aki","Archie","Flower","Fred","Griff","Harold","Rechka","Rocki","Kobe"];
+var HOSTED=!!(window.claude&&window.claude.use);
+
+/* ---------- persistence: localStorage per dog, artifact-host publish kept ---------- */
+var LSP="gdgm.";
+function lsGet(k){try{return localStorage.getItem(LSP+k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(LSP+k,v)}catch(e){}}
+function blankState(dog){return {dog:dog,savedAt:null,levels:["","","","",""],skills:[]}}
+function normalize(st){
+  if(!st||typeof st.dog!=="string") return null;
+  st.levels=(st.levels||[]).slice(0,5); while(st.levels.length<5) st.levels.push("");
+  st.skills=st.skills||[];
+  for(var i=0;i<st.skills.length;i++){
+    var sk=st.skills[i];
+    sk.q=(sk.q||[]).slice(0,5); while(sk.q.length<5) sk.q.push(0);
+    sk.steps=sk.steps||[];
+    for(var j=0;j<sk.steps.length;j++){
+      var s2=sk.steps[j];
+      s2.v=(s2.v||[]).slice(0,5); while(s2.v.length<5) s2.v.push(0);
+      s2.notes=s2.notes||{};
+    }
+    if(!sk.steps.length){
+      sk.direct=sk.direct||{v:[0,0,0,0,0],notes:{}};
+      sk.direct.v=(sk.direct.v||[]).slice(0,5); while(sk.direct.v.length<5) sk.direct.v.push(0);
+      sk.direct.notes=sk.direct.notes||{};
+    }
+  }
+  return st;
+}
+var SEED=normalize(JSON.parse(document.getElementById("state").textContent));
+function loadDog(dog){
+  var stored=null, raw=lsGet("dog."+dog);
+  if(raw){try{stored=normalize(JSON.parse(raw))}catch(e){stored=null}}
+  var seed=(SEED&&SEED.dog===dog)?SEED:null;
+  if(stored&&seed) return ((stored._ts||0)>=(seed._ts||0))?stored:seed;
+  return stored||seed||blankState(dog);
+}
+var S=loadDog(lsGet("lastDog")||(SEED&&SEED.dog)||"Harold");
+
+function levName(i){return (S.levels[i]||"").trim()}
+function levUsed(i){return levName(i).length>0}
+function levCode(i){return "L"+(i+1)}
+function levFull(i){return levCode(i)+" · "+(levUsed(i)?levName(i):"not in use")}
+function levCount(){var n=0;for(var i=0;i<5;i++) if(levUsed(i)) n++; return n}
+var BASE=JSON.stringify(S);
+var dirty=false, api=null, ro=false;
+
+function pad(n){return n<10?"0"+n:""+n}
+function stamp(){var d=new Date(); return pad(d.getDate())+" "+["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][d.getMonth()]+" "+d.getFullYear()+", "+pad(d.getHours())+":"+pad(d.getMinutes())}
+function saveLocal(){
+  S._ts=Date.now(); S.savedAt=stamp();
+  lsSet("dog."+S.dog,JSON.stringify(S)); lsSet("lastDog",S.dog);
+}
+function touchKey(skn,li){return skn+"|"+li}
+function touch(skn,li){(S.touched=S.touched||{})[touchKey(skn,li)]=Date.now()}
+function touchedAt(skn,li){return (S.touched&&S.touched[touchKey(skn,li)])||0}
+function buzz(ms){try{if(navigator.vibrate) navigator.vibrate(ms||10)}catch(e){}}
+
+/* ---------- view dispatch ---------- */
+var VIEW=lsGet("view")||((innerWidth<700)?"log":"matrix");
+function setView(v){VIEW=v; lsSet("view",v); draw()}
+function draw(){ if(VIEW==="log") renderLog(); else render(); }
+
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function stepCode(t){var m=/(?:Step|Stage)\s*(\d+)/.exec(t); return m?"S"+m[1]:"–"}
+function stepShort(t){var m=/^(?:Step|Stage)\s*\d+\s*[—–-]\s*(.+)$/.exec(t); return m?m[1]:t}
+function derive(sk){
+  if(!sk.steps.length){
+    var sm=[];
+    for(var i=0;i<5;i++){
+      var v=sk.direct.v[i];
+      if(v===-1) sm.push({s:"na",label:"n/a",direct:true});
+      else sm.push(v>0?{s:v,label:String(v),direct:true}:(sk.q[i]?{s:"q",label:"?",direct:true}:{s:0,label:"",direct:true}));
+    }
+    return {carried:[], summary:sm};
+  }
+  var n=sk.steps.length, carried=[], summary=[], s,L;
+  for(s=0;s<n;s++) carried.push([0,0,0,0,0]);
+  for(L=0;L<5;L++){
+    var top=-1, allNA=true, anyNA=false;
+    for(s=0;s<n;s++){
+      if(sk.steps[s].v[L]>0) top=s;
+      if(sk.steps[s].v[L]===-1) anyNA=true; else allNA=false;
+    }
+    /* carry only fills genuinely blank cells — never an N/A */
+    for(s=0;s<top;s++) if(sk.steps[s].v[L]===0) carried[s][L]=1;
+    if(allNA&&anyNA) summary.push({s:"na", label:"n/a"});
+    else if(top>=0) summary.push({s:sk.steps[top].v[L], label:stepCode(sk.steps[top].n)});
+    else if(sk.q[L]) summary.push({s:"q", label:"?"});
+    else summary.push({s:0, label:"", partialNA:anyNA});
+  }
+  return {carried:carried, summary:summary};
+}
+function openCount(){var k=0,i,j,L;for(i=0;i<S.skills.length;i++){var sk=S.skills[i];for(L=0;L<5;L++){if(sk.q[L]){var any=false;if(!sk.steps.length){any=sk.direct.v[L]>0}else{for(j=0;j<sk.steps.length;j++)if(sk.steps[j].v[L]>0)any=true}if(!any)k++}}}return k}
+function totalSteps(){var t=0;for(var i=0;i<S.skills.length;i++)t+=S.skills[i].steps.length;return t}
+
+/* ---------- working edge (mobile one-tap logging) ---------- */
+function edgeInfo(sk,L){
+  if(!sk.steps.length){
+    var v=sk.direct.v[L];
+    if(v===-1) return {na:true};
+    if(v===6) return {proofed:true, sti:-1, v:6};
+    return {sti:-1, v:v, q:!!(sk.q[L]&&v===0)};
+  }
+  var top=-1, s, anyNonNA=false;
+  for(s=0;s<sk.steps.length;s++){
+    if(sk.steps[s].v[L]>0) top=s;
+    if(sk.steps[s].v[L]!==-1) anyNonNA=true;
+  }
+  if(!anyNonNA) return {na:true};
+  if(top===-1){
+    for(s=0;s<sk.steps.length;s++) if(sk.steps[s].v[L]!==-1) return {sti:s, v:0, q:!!sk.q[L]};
+  }
+  if(sk.steps[top].v[L]===6){
+    for(s=top+1;s<sk.steps.length;s++){
+      if(sk.steps[s].v[L]===-1) continue;
+      return {sti:s, v:sk.steps[s].v[L]};
+    }
+    return {proofed:true, sti:top, v:6};
+  }
+  return {sti:top, v:sk.steps[top].v[L]};
+}
+function hasScoreAt(sk,L){
+  if(!sk.steps.length) return sk.direct.v[L]>0;
+  for(var s=0;s<sk.steps.length;s++) if(sk.steps[s].v[L]>0) return true;
+  return false;
+}
+function nextLevel(L){for(var i=L+1;i<5;i++) if(levUsed(i)) return i; return -1}
+function predictLevel(){
+  var best=-1, bt=0, k, L;
+  if(S.touched) for(k in S.touched){
+    var li=+k.slice(k.lastIndexOf("|")+1);
+    if(li>=0&&li<5&&levUsed(li)&&S.touched[k]>bt){bt=S.touched[k]; best=li}
+  }
+  if(best>=0) return best;
+  for(L=4;L>=0;L--){
+    if(!levUsed(L)) continue;
+    for(var i=0;i<S.skills.length;i++) if(hasScoreAt(S.skills[i],L)) return L;
+  }
+  for(L=0;L<5;L++) if(levUsed(L)) return L;
+  return 0;
+}
+var ACT=predictLevel();
+function skillOrder(L){
+  var arr=S.skills.map(function(sk,i){
+    var e=edgeInfo(sk,L);
+    return {i:i, sk:sk, e:e, scored:hasScoreAt(sk,L), t:touchedAt(sk.n,L)};
+  });
+  arr.sort(function(a,b){
+    var ga=a.e.na?2:(a.scored?0:1), gb=b.e.na?2:(b.scored?0:1);
+    if(ga!==gb) return ga-gb;
+    if(ga===0&&a.t!==b.t) return b.t-a.t;
+    return a.i-b.i;
+  });
+  return arr;
+}
+
+/* ---------- static copy (desktop matrix) ---------- */
+function scalesHTML(){
+  var stage=[[1,"Introduced","Shown to the dog here. No expectation of a response yet."],
+   [2,"Learning","Responds sometimes, with help — lure, body cue, repeated cue."],
+   [3,"Progressing","More often than not. Still needs setup or a reduced criterion."],
+   [4,"Reliable","Does it when asked, here, without help. One cue."],
+   [5,"Fluent","Fast and clean. No lure, no repeat cue, no hesitation."],
+   [6,"Proofed","Holds up against this location's <em>real</em> distractions. Owner can get it too."]];
+  var h='<div class="scales">';
+  h+='<div class="scalecard"><h3>What a cell means</h3><p class="note">Four states. Skill row and step row read differently.</p>'
+   +'<div class="srow"><div class="swatch" style="background:var(--s3);color:var(--s3i)">S4</div><div><div class="sname">Skill row — colour + step code</div><div class="sdesc">The <em>furthest step scored</em> at that location, coloured by its stage. Calculated, not typed — the only thing you can set on it is N/A for the whole column.</div></div></div>'
+   +'<div class="srow"><div class="swatch" style="background:var(--s3);color:var(--s3i)">3</div><div><div class="sname">Step row — colour + stage</div><div class="sdesc">That step\'s proficiency at that location. <strong>Click any step cell to set it.</strong></div></div></div>'
+   +'<div class="srow"><div class="swatch hatch"></div><div><div class="sname">Carried</div><div class="sdesc">A lower step, assumed passed because a higher one is being worked here — your docs say <em>"do not move up a step until he is very confident with the one you are working at."</em> Never typed; set the step below it directly to override.</div></div></div>'
+   +'<div class="srow"><div class="swatch naSw">n/a</div><div><div class="sname">Not applicable</div><div class="sdesc"><strong>Can\'t</strong> be trained at this level, as opposed to hasn\'t been yet — Hand Touch on the balcony, where he can\'t be off lead. Deliberately excluded, so it stops reading as an outstanding gap. Set from the cell picker; the skill row goes n/a once every step at that level is.</div></div></div>'
+   +'<div class="srow"><div class="swatch qc">?</div><div><div class="sname">Worked here, step not recorded</div><div class="sdesc">Sessions happened at this location but the notes don\'t say which step. Score a step to clear it.</div></div></div>'
+   +'<div class="srow"><div class="swatch" style="background:var(--s0);color:var(--s0i)">·</div><div><div class="sname">Not yet tested</div><div class="sdesc">Never attempted here. Blank — the gaps are the point.</div></div></div></div>';
+  h+='<div class="scalecard"><h3>Proficiency stage</h3><p class="note">Six stages. Set from the cell picker.</p>';
+  stage.forEach(function(r){h+='<div class="srow"><div class="swatch" style="background:var(--s'+r[0]+');color:var(--s'+r[0]+'i)">'+r[0]+'</div><div><div class="sname">'+r[1]+'</div><div class="sdesc">'+r[2]+'</div></div></div>'});
+  h+='</div><div class="scalecard"><h3>'+esc(S.dog)+'\'s levels</h3>'
+   +'<p class="note">Up to five, easiest first. Name them for real places — <strong>type over these</strong>. Leave one blank to switch that level off.</p>';
+  for(var i=0;i<5;i++){
+    h+='<div class="srow"><div class="lcode">'+levCode(i)+'</div>'
+     +'<div><input class="levin" data-i="'+i+'" type="text" value="'+esc(S.levels[i]||"")+'" '
+     +'placeholder="not in use — name it to switch on" aria-label="Name for '+levCode(i)+'"></div></div>';
+  }
+  return h+'</div></div>';
+}
+function flagsHTML(){
+  return '<div class="stack">'
+  +'<div class="callout green"><h3>Done — Loose Lead Walking is Step 4, and it\'s now a worked example</h3><p>You confirmed the lead was on because Harold has to be on one out there, and was probably just dragging. That\'s a <strong>variation, not a step</strong> — Step 6 is the lead deliberately in your hand. Recorded as a cell note on Step 4 / L2, with Step 6 carrying the distinguishing note. Exactly what the variations layer is for.</p></div>'
+  +'<div class="callout green"><h3>Done — Flitting Game now says Step, not Stage</h3><p>Audited all 86 library docs, male and female. Flitting Game was the <strong>only</strong> deviation. Renamed in both templates — 5 occurrences each, including the in-body cross-references ("go back to Stage 1"). Nothing else needed touching.</p></div>'
+  +'<div class="callout green"><h3>Done — Recall is now one method, one home</h3><p><strong>Step 3 "Generalise"</strong> cut from both templates: practise in different places / vary the motivator / take it on the road is what L1–L5 already tracks, so as a step it could never be finished.</p><p><strong>Step 2 (Premack)</strong> cut too — the standalone <strong>Premack Recall</strong> doc survives with its fuller 4-step text (Build the Distraction / Call Him Away / Pay Out Through You / Vary Everything). Recall is left as a single method, so its step numbering is gone and it now sits in this matrix as a <strong>stepless skill</strong> — one row, cells set directly. Same as Kong Stuffing, Barking&nbsp;–&nbsp;Extinction Burst and Toilet Training, which never had numbered steps either.</p></div>'
+  +'<div class="callout green"><h3>Done — Chase the Treat retired, Recall Find It untouched</h3><p>You use Recall Find It most, so it stays exactly as it is. Chase the Treat was the duplicate — both are throw-food-then-recall — so both templates are now prefixed <code>zRETIRED -</code> and the Library Index row reads <strong>Recall (retired)</strong>, same pattern as the Loose Lead Walking consolidation. It won\'t be sent to a client again.</p><p>The other five are cleanly distinct and were left alone: Ping Pong Recall, Catch Me If You Can, The Big Release, Recall Indoor Exercise, Premack Recall.</p></div>'
+  +'<div class="callout green"><h3>Closed — "Burrito treat" is a warm-up, not an exercise</h3><p>Used 7 Aug to settle Harold before training. You\'ve confirmed it\'s a warm-up game rather than a training exercise, so it needs no library write-up and gets no row here. Closed on GDG HQ → To Write Up.</p></div>'
+  +'<div class="callout green"><h3>Done — Swap Step 1 relabelled Pairing</h3><p>Both templates now read <strong>Step 1 — Pairing</strong> / <strong>Step 2 — Swap for a Toy</strong>. The body of Step 1 is untouched — say “swap”, toss a treat away, don’t worry about timing, repeat often — it just has the right name on it now. Matches Fred\'s doc exactly.</p><p>I\'d briefly added a separate pairing step ahead of it; that was wrong and it\'s been removed, along with the delivered-vs-thrown line. Harold\'s scores stayed on the same step and are now under the Pairing label.</p></div>'
+  +'<div class="callout"><h3>Kept — the old “Drop” doc</h3><p>The loose <strong>Swap</strong> doc in Drive from May 2026 (Harold\'s original) stays as it is, on your call. It calls the cue <strong>“Drop”</strong> and numbers things <strong>“level 1 / level 2”</strong> — the origin of the “Swap Level 1” wording in your session notes. Worth remembering it\'s outside the library and doesn\'t match the current template.</p></div>'
+  +'<div class="callout green"><h3>Done — you named the levels</h3><p>Inside Flat → The Balcony → Gated Pen → Basketball Court → Street walks. Every score stayed on its slot.</p><p><strong>One to check:</strong> Recall at L4 carries a note reading <em>"semi-enclosed area, 24 Jul — has an entry/exit, not fully fenced."</em> If that\'s the basketball court, the note is just extra detail and can stay. If it\'s a different place, we\'re a level short.</p></div>'
+  +'<div class="callout green"><h3>Done — all six open cells scored</h3><p>You cleared every amber cell and filled in a good deal more besides. <strong>37 cells scored</strong>, nothing left guessing.</p></div>'
+  +'<div class="callout green"><h3>Done — N/A is a real cell state now</h3><p>Your <em>"N/A due to no off-lead"</em> note on Hand Touch was doing work the system couldn\'t see. There\'s now a seventh state: <strong>n/a</strong>, a neutral cross-hatch, deliberately unlike both blank and the navy ramp so an excluded cell never reads as an outstanding gap. I\'ve applied it to that Hand Touch cell and kept your note as the reason.</p><p>Set it from the cell picker like any stage. Two rules keep it honest: <strong>carry never fills an N/A</strong> (a lower step marked N/A stays N/A even when you\'re working above it), and the skill row only goes n/a once <em>every</em> step at that level is — otherwise it stays blank and flags that some steps are still untested. Clicking a skill-row cell offers "mark every step N/A here", which skips any step you\'ve already scored.</p></div>'
+  +'</div>';
+}
+function specHTML(){
+  var rows=[["Placement","New <strong>6th tab, \"Skills Matrix\"</strong>, after Exercise Tracker. The 5 existing tabs untouched — including the Exercise Tracker's prose column."],
+  ["Rows","One parent row per skill, its documented steps as a <strong>native Sheets row group</strong> beneath, collapsed by default. Steps read from the dog's own sex-matched doc, never typed by hand."],
+  ["Columns","Up to five level slots, easiest first. Header row 1 is the fixed <strong>L1–L5</strong> code; row 2 is that dog's own name for it, free text — Harold's basketball court, Ailsa's garden. Blank name = level off, column greyed."],
+  ["Skill row","Formula: the furthest step with a score at that level, inheriting its stage colour. Nothing to maintain."],
+  ["Step rows","Data-validation dropdown: blank, or 1–6. Conditional formatting paints the ramp and the carried hatch."],
+  ["No-step skills","Kong Stuffing, Barking – Extinction Burst, Toilet Training and now Recall have no numbered steps. Single row, no group, cells set directly."],
+  ["Variations","Cell <strong>note</strong> for distance / duration / distraction / handling conditions. Never a new row — the lead-on-the-balcony case is exactly this."],
+  ["Upkeep","After each debrief I name the skill × step × location cells that session touched and ask whether the stage moved. <strong>Neither step nor stage is ever inferred from your prose.</strong>"],
+  ["Doc changes","Renumbering steps in a doc means regenerating that row group for every dog on that skill. Added to the debrief check."],
+  ["Client copies","Already-sent client docs <strong>freeze at the version the client received</strong> — they're never refreshed when a template changes. The matrix always reads step names from the <strong>template</strong>, so a client's handout can legitimately disagree with their sheet. Check before talking steps with an owner."],
+  ["Rollout","Nothing written to any of the 9 live sheets until you sign this off."]];
+  var h='<div class="speclist">';
+  rows.forEach(function(r){h+='<div class="spec"><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>'});
+  return h+'</div>';
+}
+function dogOptions(){
+  var h='';
+  DOGS.forEach(function(d){h+='<option'+(d===S.dog?' selected':'')+'>'+esc(d)+'</option>'});
+  return h;
+}
+
+/* ---------- desktop matrix render ---------- */
+function render(){
+  var open=openCount(), isH=(S.dog==="Harold");
+  var h='<div class="wrap"><header class="masthead">'
+   +'<span class="eyebrow">Good Dog Gordon · Skills Matrix'+(isH?' · Template v5 mockup':'')+'</span>'
+   +'<h1>'+esc(S.dog)+"'s Skills Matrix</h1>";
+  if(isH){
+    h+='<p class="sub">Fourteen documented skills, <strong>'+totalSteps()+' documented steps</strong>, scored across <strong>'+esc(S.dog)+'\'s own '+levCount()+' levels</strong>. Steps pulled verbatim from his male-template docs, live as of the library edits below. <strong>Name the levels and click any cell to set it</strong> — your edits save into this page.</p>'
+     +'<div class="chips"><span class="chip">17 sessions</span><span class="chip">14 skills · all ✓ in library</span><span class="chip">'+totalSteps()+' steps</span><span class="chip">'+levCount()+' levels in use</span>'
+     +'<span class="chip'+(open?' warn':'')+'">'+open+' cell'+(open===1?'':'s')+' still open</span>'
+     +'<span class="chip warn">⚠ Muzzled on all walks</span><span class="chip warn">⚠ RG referred out</span></div>';
+  }else{
+    h+='<p class="sub">'+(S.skills.length
+      ? S.skills.length+' documented skills, <strong>'+totalSteps()+' documented steps</strong>, scored across '+levCount()+' levels. <strong>Name the levels and click any cell to set it.</strong>'
+      : 'No documented skills loaded for '+esc(S.dog)+' yet. Skill and step names only ever come from the exercise library — nothing is pre-filled or guessed here. Import a matrix JSON via <strong>Export / Import</strong> below.')+'</p>'
+     +'<div class="chips"><span class="chip">'+S.skills.length+' skills</span><span class="chip">'+totalSteps()+' steps</span><span class="chip">'+levCount()+' levels in use</span>'
+     +'<span class="chip'+(open?' warn':'')+'">'+open+' cell'+(open===1?'':'s')+' still open</span></div>';
+  }
+  h+='</header>';
+
+  h+='<section><h2>The three axes</h2>';
+  if(isH){
+    h+='<p class="lede">The grid is <strong>skill × level</strong>. Steps are <strong>collapsible sub-rows</strong> — Google Sheets does this natively with row groups, so it works in the real sheet too. Collapsed: 14 rows and the whole picture. Expanded: which step he\'s on in each place.</p>'
+     +'<p class="lede"><strong>Levels are now his own.</strong> L1–L5 are difficulty slots, easiest first, and each dog names them for the places they actually train — Harold\'s basketball court, Ailsa\'s garden. Up to five; leave one blank and it switches off. The trade-off: Harold\'s L3 and Ailsa\'s L3 are no longer the same thing, so the grid tracks <em>his</em> progression rather than comparing dogs. Worth it — you were never going to train Harold in Ailsa\'s garden.</p>';
+  }else{
+    h+='<p class="lede">The grid is <strong>skill × level</strong>, with each skill\'s documented steps as collapsible sub-rows. L1–L5 are difficulty slots, easiest first — name them for the places this dog actually trains. Leave a name blank to switch that level off.</p>';
+  }
+  h+=scalesHTML()+'</section>';
+
+  h+='<section><h2>The matrix</h2>'
+   +'<p class="lede">Click a skill to open its steps, then <strong>click any step cell</strong> to set the stage and write a variation note. Skill-row cells are calculated — they update themselves.</p>'
+   +'<div class="toolbar"><button class="tb" id="expandAll">Expand all steps</button><button class="tb" id="collapseAll">Collapse all</button>'
+   +'<button class="tb" id="openOnly">Show open cells only</button>'
+   +'<select class="tbsel" id="dogsel2" aria-label="Dog">'+dogOptions()+'</select>'
+   +'<button class="tb" id="dexport">Export / Import</button>'
+   +'<button class="tb" id="toPhone">Phone log</button>'
+   +'<span class="hint">Hover a cell for its note</span></div>'
+   +'<div class="matrixwrap"><table><thead><tr><th class="h-skill">Skill · Library name</th>';
+  for(var i=0;i<5;i++){
+    h+='<th class="h-loc'+(levUsed(i)?'':' off')+'"><span class="lv">'+levCode(i)+'</span>'
+     +'<span class="ln">'+(levUsed(i)?esc(levName(i)):'not in use')+'</span></th>';
+  }
+  h+='</tr></thead><tbody id="grid"></tbody></table></div>';
+
+  if(isH){
+    h+='<div class="stack" style="margin-top:6px"><div class="callout"><h3>What the grid says that the tracker can\'t</h3>'
+     +'<p>Now it\'s filled in, the shape is stark. Scored cells by level: <strong>Inside Flat 17 · The Balcony 10 · Gated Pen 9 · Basketball Court 1 · Street walks 0.</strong> Half of everything sits in one room.</p>'
+     +'<p>Indoors he\'s genuinely strong — Mark a Sit is Proofed across three levels, Hand Touch and Snuffle Rolls are Fluent in the flat. But <strong>the only thing scored at the basketball court is Recall, at Learning</strong>, and street walks is untouched. Filling the grid in didn\'t narrow the gap; it made it measurable. That\'s consistent with muzzled walks and the RG referral, but it means the strong stuff is strong where it\'s easy.</p>'
+     +'<p>And with steps visible: <strong>Loose Lead Walking is stuck at Step 4 of 7</strong>, Give and Take are on Step 1 of 3. The distraction work that used to sit inside Recall now lives in <strong>Premack Recall</strong> — a 4-step doc never started, and the one that would actually hold up outdoors.</p></div></div>';
+  }
+  h+='</section>';
+
+  if(isH){
+    h+='<section><h2>Flags &amp; audit findings</h2>'+flagsHTML()+'</section>';
+    h+='<section><h2>Sheet implementation</h2>'+specHTML()
+     +'<p class="footnote">Step names verbatim from Harold\'s male-template docs in the Exercise Library Index. Cell values seeded only where his session notes evidence a specific step; where they don\'t, the cell is amber or blank rather than guessed.</p></section>';
+  }
+  h+='</div>';
+
+  document.getElementById("root").innerHTML=h;
+  buildGrid();
+  wire();
+  savebar();
+}
+
+function buildGrid(){
+  var grid=document.getElementById("grid"), lastCat=null, uid=0;
+  if(!S.skills.length){
+    var er=document.createElement("tr");
+    er.innerHTML='<td class="skillcell" style="padding:14px 16px;color:var(--ink-3);font-size:13px">No skills loaded yet — skills and steps only ever come from the documented library.</td><td class="cell" colspan="5"></td>';
+    grid.appendChild(er);
+    return;
+  }
+  S.skills.forEach(function(sk,ski){
+    if(sk.cat!==lastCat){
+      lastCat=sk.cat;
+      var cr=document.createElement("tr"); cr.className="cat";
+      cr.innerHTML='<td class="catname">'+esc(sk.cat)+'</td><td colspan="5"></td>';
+      grid.appendChild(cr);
+    }
+    var d=derive(sk), id="g"+(uid++), stepless=!sk.steps.length;
+    var tr=document.createElement("tr"); tr.className="skill"; tr.dataset.group=id;
+    var sc=document.createElement("td"); sc.className="skillcell";
+    if(stepless){
+      var sp=document.createElement("div"); sp.className="disc nodisc";
+      sp.innerHTML='<span class="tri" style="visibility:hidden">▶</span><span>'+esc(sk.n)+'</span><span class="stepcount">no steps</span>';
+      sc.appendChild(sp);
+    }else{
+      var btn=document.createElement("button"); btn.className="disc"; btn.type="button"; btn.setAttribute("aria-expanded","false");
+      btn.innerHTML='<span class="tri">▶</span><span>'+esc(sk.n)+'</span><span class="stepcount">'+sk.steps.length+' step'+(sk.steps.length>1?'s':'')+'</span>';
+      btn.addEventListener("click",function(){toggle(tr,id)});
+      sc.appendChild(btn);
+    }
+    tr.appendChild(sc);
+    d.summary.forEach(function(c,i){
+      var td=document.createElement("td"); td.className="cell"+(levUsed(i)?"":" off");
+      var clickable = levUsed(i);
+      var b=document.createElement(clickable?"button":"div"); b.className="box"; b.dataset.s=c.s; b.textContent=c.label;
+      if(clickable){b.type="button"; b.style.cursor="pointer"; b.dataset.ski=ski; b.dataset.li=i;
+        b.dataset.sti = stepless ? -1 : -2;   /* -2 = skill row of a stepped skill: N/A only */
+        b.addEventListener("click",function(e){e.stopPropagation(); openPick(b)});}
+      else b.tabIndex=0;
+      b.dataset.k=sk.n; b.dataset.loc=levFull(i);
+      b.dataset.stage = c.s==="na" ? "Not applicable here"
+        : c.s==="q" ? "Worked here — step not recorded"
+        : (c.s===0?"Not yet tested":(stepless?STAGES[c.s]:STAGES[c.s]+" at "+c.label));
+      var dn = stepless ? sk.direct.notes[String(i)] : null;
+      if(dn){b.dataset.note=dn; b.classList.add("note")}
+      else if(c.s==="na"){b.dataset.note="Can't be trained at this level — deliberately excluded, not a gap."; b.classList.add("note")}
+      else if(c.s==="q"){b.dataset.note=stepless?"Sessions logged here but no stage recorded. Click to set.":"Sessions logged here but the notes don't say which step. Open the skill and score a step to clear it."; b.classList.add("note")}
+      else if(c.partialNA){b.dataset.note="Some steps are marked N/A here, but not all — the rest are still untested."; b.classList.add("note")}
+      b.setAttribute("aria-label",sk.n+", "+levFull(i)+": "+b.dataset.stage+(clickable?". Click to set.":""));
+      td.appendChild(b); tr.appendChild(td);
+    });
+    grid.appendChild(tr);
+
+    sk.steps.forEach(function(st,si){
+      var srow=document.createElement("tr"); srow.className="step"; srow.dataset.of=id;
+      var nc=document.createElement("td"); nc.className="skillcell";
+      var m=/^((?:Step|Stage)\s*\d+)\s*[—–-]\s*(.+)$/.exec(st.n);
+      nc.innerHTML=m?'<span class="sn">'+esc(m[1].replace("Stage","Step"))+'</span>'+esc(m[2]):esc(st.n);
+      srow.appendChild(nc);
+      st.v.forEach(function(v,i){
+        var td=document.createElement("td"); td.className="cell"+(levUsed(i)?"":" off");
+        var b=document.createElement(levUsed(i)?"button":"div"); if(levUsed(i)) b.type="button"; b.className="box";
+        var isC = v===0 && d.carried[si][i]===1;
+        var isNA = v===-1;
+        b.dataset.s = isNA ? "na" : (isC ? "c" : v);
+        b.textContent = isNA ? "n/a" : (isC ? "" : (v>0?String(v):""));
+        b.dataset.ski=ski; b.dataset.sti=si; b.dataset.li=i;
+        b.dataset.k=sk.n+" · "+st.n; b.dataset.loc=levFull(i);
+        b.dataset.stage = isNA ? "Not applicable here" : (isC ? "Carried — assumed passed" : STAGES[v]);
+        var nt=st.notes[String(i)];
+        if(nt){b.dataset.note=nt; b.classList.add("note")}
+        else if(isNA) b.dataset.note="Can't be trained at this level — deliberately excluded, not a gap.";
+        else if(isC) b.dataset.note="Not scored directly. Assumed passed because a later step is being worked here.";
+        b.setAttribute("aria-label",sk.n+" "+st.n+", "+levFull(i)+": "+b.dataset.stage+". Click to set.");
+        if(levUsed(i)) b.addEventListener("click",function(e){e.stopPropagation(); openPick(b)});
+        td.appendChild(b); srow.appendChild(td);
+      });
+      grid.appendChild(srow);
+    });
+  });
+}
+
+function toggle(tr,id,force){
+  var open = force!==undefined ? force : !(tr.className.indexOf("open")>-1);
+  tr.classList.toggle("open",open);
+  tr.querySelector(".disc").setAttribute("aria-expanded",String(open));
+  var rows=document.querySelectorAll('tr.step[data-of="'+id+'"]');
+  for(var i=0;i<rows.length;i++) rows[i].classList.toggle("show",open);
+}
+function wire(){
+  var ins=document.querySelectorAll(".levin");
+  for(var i=0;i<ins.length;i++){
+    ins[i].onchange=function(){
+      var k=+this.dataset.i, val=this.value.trim();
+      if(S.levels[k]===val) return;
+      S.levels[k]=val;
+      repaint();
+    };
+  }
+  document.getElementById("expandAll").onclick=function(){
+    var t=document.querySelectorAll("tr.skill"); for(var i=0;i<t.length;i++) toggle(t[i],t[i].dataset.group,true)};
+  document.getElementById("collapseAll").onclick=function(){
+    var t=document.querySelectorAll("tr.skill"); for(var i=0;i<t.length;i++) toggle(t[i],t[i].dataset.group,false)};
+  document.getElementById("openOnly").onclick=function(){
+    var t=document.querySelectorAll("tr.skill");
+    for(var i=0;i<t.length;i++){
+      var has=t[i].querySelectorAll('.box[data-s="q"]').length>0;
+      toggle(t[i],t[i].dataset.group,has);
+    }
+    var first=document.querySelector('tr.skill .box[data-s="q"]');
+    if(first) first.scrollIntoView({block:"center",behavior:"smooth"});
+  };
+  var tp=document.getElementById("toPhone"); if(tp) tp.onclick=function(){setView("log")};
+  var ds=document.getElementById("dogsel2"); if(ds) ds.onchange=function(){switchDog(this.value)};
+  var de=document.getElementById("dexport"); if(de) de.onclick=openDataSheet;
+}
+
+/* ---------- picker (desktop) ---------- */
+var cur=null;
+function openPick(b){
+  cur={ski:+b.dataset.ski, sti:+b.dataset.sti, li:+b.dataset.li, el:b};
+  var sk=S.skills[cur.ski];
+  var p=document.getElementById("pick"), h;
+
+  if(cur.sti===-2){
+    /* skill row of a stepped skill — N/A for the whole column only */
+    var anyNA=false, anyScore=false, j;
+    for(j=0;j<sk.steps.length;j++){
+      if(sk.steps[j].v[cur.li]===-1) anyNA=true;
+      if(sk.steps[j].v[cur.li]>0) anyScore=true;
+    }
+    h='<span class="pt">'+esc(levFull(cur.li))+'</span><div class="pn">'+esc(sk.n)+'</div>'
+     +'<p style="font-size:13px;color:var(--ink-2);margin:0 0 11px">This row is calculated from its steps. The one thing you can set here is whether the whole skill is <strong>not applicable</strong> at this level.</p>'
+     +'<div class="prow" style="flex-direction:column;gap:7px">'
+     +'<button class="tb" id="pna"'+(anyScore?' disabled title="Clear the scored steps first"':'')+' style="width:100%">Mark every step N/A here</button>'
+     +'<button class="tb" id="pclr"'+(anyNA?'':' disabled')+' style="width:100%">Clear N/A back to blank</button>'
+     +'<button class="tb" id="pcancel" style="width:100%">Cancel</button></div>';
+    p.innerHTML=h; p.classList.add("on"); place(b,p);
+    var na=p.querySelector("#pna"), clr=p.querySelector("#pclr");
+    if(na) na.onclick=function(){bulkNA(-1)};
+    if(clr) clr.onclick=function(){bulkNA(0)};
+    p.querySelector("#pcancel").onclick=closePick;
+    return;
+  }
+
+  var st= cur.sti<0 ? sk.direct : sk.steps[cur.sti];
+  var v=st.v[cur.li], note=st.notes[String(cur.li)]||"";
+  h='<span class="pt">'+esc(levFull(cur.li))+'</span><div class="pn">'+esc(b.dataset.k)+'</div><div class="opts">';
+  h+='<button class="opt" data-v="0" aria-pressed="'+(v===0)+'" title="Not yet tested">–</button>';
+  for(var i=1;i<=6;i++) h+='<button class="opt" data-v="'+i+'" aria-pressed="'+(v===i)+'" title="'+STAGES[i]+'">'+i+'</button>';
+  h+='<button class="opt" data-v="-1" aria-pressed="'+(v===-1)+'" title="Not applicable at this level">n/a</button>';
+  h+='</div><label for="pnote">Variation note — distance, duration, distraction, handling</label>'
+   +'<textarea id="pnote" placeholder="e.g. lead on but dragging; 5m distance; Aram out of the room">'+esc(note)+'</textarea>'
+   +'<div class="prow"><button class="tb" id="pcancel">Cancel</button><button class="primary" id="papply" style="flex:1">Apply</button></div>';
+  p.innerHTML=h; p.classList.add("on");
+  place(b,p);
+  var opts=p.querySelectorAll(".opt");
+  for(var j=0;j<opts.length;j++) opts[j].onclick=function(){
+    for(var k=0;k<opts.length;k++) opts[k].setAttribute("aria-pressed","false");
+    this.setAttribute("aria-pressed","true");
+  };
+  p.querySelector("#pcancel").onclick=closePick;
+  p.querySelector("#papply").onclick=applyPick;
+  p.querySelector("#pnote").focus();
+}
+function place(b,p){
+  var r=b.getBoundingClientRect(), pr=p.getBoundingClientRect();
+  var x=Math.max(8,Math.min(r.left+r.width/2-pr.width/2, innerWidth-pr.width-8));
+  var y=r.bottom+8; if(y+pr.height>innerHeight-70) y=Math.max(8,r.top-pr.height-8);
+  p.style.left=x+"px"; p.style.top=y+"px";
+}
+function closePick(){document.getElementById("pick").classList.remove("on"); cur=null}
+function repaint(){
+  saveLocal();
+  var scroll=window.scrollY;
+  var openIds=[], t=document.querySelectorAll("tr.skill"), i;
+  for(i=0;i<t.length;i++) if(t[i].className.indexOf("open")>-1) openIds.push(i);
+  render();
+  var t2=document.querySelectorAll("tr.skill");
+  openIds.forEach(function(k){ if(t2[k]) toggle(t2[k],t2[k].dataset.group,true) });
+  window.scrollTo(0,scroll);
+  dirty = JSON.stringify(S)!==BASE;
+  savebar();
+}
+function bulkNA(val){
+  if(!cur) return;
+  var sk=S.skills[cur.ski];
+  for(var j=0;j<sk.steps.length;j++){
+    var cv=sk.steps[j].v[cur.li];
+    /* never touch a real score */
+    if(val===-1 && cv===0) sk.steps[j].v[cur.li]=-1;
+    if(val===0  && cv===-1) sk.steps[j].v[cur.li]=0;
+  }
+  if(val===-1) sk.q[cur.li]=0;
+  touch(sk.n,cur.li);
+  closePick(); repaint();
+}
+function applyPick(){
+  if(!cur) return;
+  var p=document.getElementById("pick");
+  var sel=p.querySelector('.opt[aria-pressed="true"]');
+  var v=sel?+sel.dataset.v:0;
+  var note=p.querySelector("#pnote").value.trim();
+  var skk=S.skills[cur.ski];
+  var st= cur.sti<0 ? skk.direct : skk.steps[cur.sti];
+  st.v[cur.li]=v;
+  if(note) st.notes[String(cur.li)]=note; else delete st.notes[String(cur.li)];
+  if(v!==0) skk.q[cur.li]=0;
+  touch(skk.n,cur.li);
+  closePick(); repaint();
+}
+document.addEventListener("click",function(e){
+  var p=document.getElementById("pick");
+  if(p.classList.contains("on") && !p.contains(e.target) && !e.target.closest(".box")) closePick();
+});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){closePick(); closeSheet()}});
+
+/* ---------- mobile one-tap log view ---------- */
+function stageName(v){return STAGES[v]||""}
+function chipHTML(r){
+  var sk=r.sk, e=r.e, L=ACT, name=esc(sk.n);
+  var stepped=sk.steps.length>0;
+  var more='<button class="mmore" data-ski="'+r.i+'" aria-label="Full picker for '+name+'">⌄</button>';
+  if(e.na){
+    return '<div class="mskill na"><button class="mmain" type="button" data-ski="'+r.i+'" data-mode="na">'
+     +'<span class="mleft"><span class="mname">'+name+'</span><span class="msub">n/a at this level — excluded, not a gap</span></span>'
+     +'<span class="mright"><span class="box mbadge" data-s="na">n/a</span></span></button>'+more+'</div>';
+  }
+  if(e.proofed){
+    var nl=nextLevel(L);
+    return '<div class="mskill"><button class="mmain" type="button" data-ski="'+r.i+'" data-mode="proofed">'
+     +'<span class="mleft"><span class="mname">'+name+'</span>'
+     +'<span class="msub">Proofed here'+(stepped?' — '+stepCode(sk.steps[e.sti].n)+' '+esc(stepShort(sk.steps[e.sti].n)):'')+'</span>'
+     +(nl>=0?'<span class="mgo" data-go="'+nl+'">next: '+levCode(nl)+' · '+esc(levName(nl))+' →</span>':'')
+     +'</span><span class="mright"><span class="box mbadge" data-s="6">6 Proofed</span></span></button>'+more+'</div>';
+  }
+  var v=e.v, badgeS=e.q?"q":v, nextV=(v===0?1:v+1);
+  var sub=stepped ? stepCode(sk.steps[e.sti].n)+' — '+esc(stepShort(sk.steps[e.sti].n)) : 'no steps — scored direct';
+  var badge=badgeS==="q" ? "?" : (v>0 ? v+' '+stageName(v) : '·');
+  return '<div class="mskill"><button class="mmain" type="button" data-ski="'+r.i+'" data-mode="adv">'
+   +'<span class="mleft"><span class="mname">'+name+'</span><span class="msub">'+sub+'</span></span>'
+   +'<span class="mright"><span class="box mbadge" data-s="'+badgeS+'">'+badge+'</span>'
+   +'<span class="mnext">tap → '+nextV+' '+stageName(nextV)+'</span></span></button>'+more+'</div>';
+}
+function renderLog(keepScroll){
+  var sy=window.scrollY;
+  if(!levUsed(ACT)) ACT=predictLevel();
+  var used=levCount();
+  var h='<div class="mob">';
+  h+='<header class="mhead"><select id="dogsel" class="dsel" aria-label="Dog">'+dogOptions()+'</select>'
+   +'<span style="flex:1"></span>'
+   +'<button class="tb" id="mdata" type="button">Data</button>'
+   +'<button class="tb" id="toGrid" type="button">Grid</button></header>';
+  if(used){
+    h+='<div class="levrow">';
+    for(var i=0;i<5;i++){
+      if(!levUsed(i)) continue;
+      h+='<button class="lch" type="button" data-li="'+i+'" aria-pressed="'+(i===ACT)+'"><span class="c">'+levCode(i)+'</span><span class="n">'+esc(levName(i))+'</span></button>';
+    }
+    h+='</div>';
+  }else{
+    h+='<p class="mmsg">No levels named yet for '+esc(S.dog)+' — open the <strong>Grid</strong> view and name at least one level.</p>';
+  }
+  if(!S.skills.length){
+    h+='<p class="mmsg">No skills loaded for '+esc(S.dog)+' yet. Skill and step names only ever come from the documented exercise library — nothing is invented here. Import a matrix JSON via <strong>Data</strong>.</p>';
+  }else if(used){
+    h+='<div class="mlist" id="mlist">';
+    skillOrder(ACT).forEach(function(r){h+=chipHTML(r)});
+    h+='</div>';
+    h+='<p class="mfootnote">One tap on a skill logs one advance at '+esc(levName(ACT))+'. Hold a skill (or tap ⌄) for the full picker — any stage, N/A, or a note. Every tap can be undone for 5 seconds.</p>';
+  }
+  h+='</div>';
+  document.getElementById("root").innerHTML=h;
+  wireLog();
+  savebar();
+  if(keepScroll) window.scrollTo(0,sy);
+}
+function wireLog(){
+  var ds=document.getElementById("dogsel"); if(ds) ds.onchange=function(){switchDog(this.value)};
+  var tg=document.getElementById("toGrid"); if(tg) tg.onclick=function(){setView("matrix")};
+  var md=document.getElementById("mdata"); if(md) md.onclick=openDataSheet;
+  var chips=document.querySelectorAll(".lch");
+  for(var i=0;i<chips.length;i++) chips[i].onclick=function(){ACT=+this.dataset.li; renderLog(true)};
+  var mores=document.querySelectorAll(".mmore");
+  for(i=0;i<mores.length;i++) mores[i].onclick=function(){openSheet(+this.dataset.ski)};
+  var mains=document.querySelectorAll(".mmain");
+  for(i=0;i<mains.length;i++) wireMain(mains[i]);
+}
+function wireMain(el){
+  var t=null, held=false, moved=false, sx=0, sy=0;
+  el.addEventListener("contextmenu",function(e){e.preventDefault()});
+  el.addEventListener("pointerdown",function(e){
+    held=false; moved=false; sx=e.clientX; sy=e.clientY;
+    clearTimeout(t);
+    t=setTimeout(function(){held=true; buzz(15); openSheet(+el.dataset.ski)},450);
+  });
+  el.addEventListener("pointermove",function(e){
+    if(Math.abs(e.clientX-sx)>12||Math.abs(e.clientY-sy)>12){moved=true; clearTimeout(t)}
+  });
+  el.addEventListener("pointercancel",function(){clearTimeout(t); moved=true});
+  el.addEventListener("pointerup",function(e){
+    clearTimeout(t);
+    if(held||moved) return;
+    var go=e.target.closest&&e.target.closest(".mgo");
+    if(go){ACT=+go.dataset.go; renderLog(); return}
+    var mode=el.dataset.mode;
+    if(mode==="na"){openSheet(+el.dataset.ski); return}
+    if(mode==="proofed"){buzz(5); return}
+    tapAdvance(+el.dataset.ski);
+  });
+}
+function tapAdvance(ski){
+  var sk=S.skills[ski], L=ACT, e=edgeInfo(sk,L);
+  if(e.na||e.proofed) return;
+  var st = e.sti===-1 ? sk.direct : sk.steps[e.sti];
+  var prev=st.v[L], prevQ=sk.q[L];
+  var hadT=S.touched?S.touched[touchKey(sk.n,L)]:undefined;
+  var nv = prev===0 ? 1 : Math.min(6,prev+1);
+  st.v[L]=nv; sk.q[L]=0; touch(sk.n,L); saveLocal(); buzz(10);
+  var lbl=sk.n+(e.sti>=0?' '+stepCode(sk.steps[e.sti].n):'')+' → '+nv+' '+STAGES[nv]+' at '+levName(L);
+  showUndo(lbl,function(){
+    st.v[L]=prev; sk.q[L]=prevQ;
+    if(S.touched){if(hadT===undefined) delete S.touched[touchKey(sk.n,L)]; else S.touched[touchKey(sk.n,L)]=hadT}
+    saveLocal(); if(VIEW==="log") renderLog(true); else repaint();
+  });
+  renderLog(true);
+}
+
+/* ---------- 5s inline undo ---------- */
+var undoTimer=null;
+function undoEl(){
+  var u=document.getElementById("undo");
+  if(!u){u=document.createElement("div"); u.id="undo"; document.body.appendChild(u)}
+  return u;
+}
+function showUndo(label,fn){
+  var u=undoEl();
+  clearTimeout(undoTimer);
+  u.innerHTML='<span class="ul">'+esc(label)+'</span><button type="button" id="undobtn">Undo</button>';
+  u.classList.add("on");
+  document.getElementById("undobtn").onclick=function(){u.classList.remove("on"); clearTimeout(undoTimer); fn()};
+  undoTimer=setTimeout(function(){u.classList.remove("on")},5000);
+}
+
+/* ---------- bottom sheet: full picker + data ---------- */
+function sheetEls(){
+  var bg=document.getElementById("sheetbg"), sh=document.getElementById("sheet");
+  if(!bg){bg=document.createElement("div"); bg.id="sheetbg"; document.body.appendChild(bg);
+    bg.addEventListener("click",closeSheet)}
+  if(!sh){sh=document.createElement("div"); sh.id="sheet"; sh.setAttribute("role","dialog"); document.body.appendChild(sh)}
+  return {bg:bg,sh:sh};
+}
+function closeSheet(){
+  var bg=document.getElementById("sheetbg"), sh=document.getElementById("sheet");
+  if(bg) bg.classList.remove("on");
+  if(sh) sh.classList.remove("on");
+}
+function openSheet(ski,sti){
+  var sk=S.skills[ski], L=ACT, els=sheetEls();
+  if(sti===undefined){
+    if(sk.steps.length){var e=edgeInfo(sk,L); sti=(e.sti!==undefined&&e.sti>=0)?e.sti:0}
+    else sti=-1;
+  }
+  var st= sti<0 ? sk.direct : sk.steps[sti];
+  var v=st.v[L], note=st.notes[String(L)]||"";
+  var h='<span class="pt">'+esc(levFull(L))+'</span><div class="pn">'+esc(sk.n)+'</div>';
+  if(sk.steps.length){
+    h+='<div class="steptabs">';
+    sk.steps.forEach(function(s2,i2){
+      var vv=s2.v[L];
+      h+='<button class="stab'+(i2===sti?' cur':'')+'" type="button" data-sti="'+i2+'">'+stepCode(s2.n)
+       +'<span class="sv box" data-s="'+(vv===-1?'na':vv)+'">'+(vv===-1?'n/a':(vv>0?vv:'·'))+'</span></button>';
+    });
+    h+='</div><div class="stepname">'+esc(sk.steps[sti].n)+'</div>';
+  }
+  h+='<div class="opts sheetopts">';
+  h+='<button class="opt big" type="button" data-v="0" aria-pressed="'+(v===0)+'">–<span class="ol">Not tested</span></button>';
+  for(var i=1;i<=6;i++) h+='<button class="opt big" type="button" data-v="'+i+'" aria-pressed="'+(v===i)+'">'+i+'<span class="ol">'+STAGES[i]+'</span></button>';
+  h+='<button class="opt big" type="button" data-v="-1" aria-pressed="'+(v===-1)+'">n/a<span class="ol">Excluded</span></button>';
+  h+='</div>';
+  h+='<label for="snote">Variation note — distance, duration, distraction, handling</label>'
+   +'<textarea id="snote" placeholder="e.g. lead on but dragging; 5m distance; Aram out of the room">'+esc(note)+'</textarea>'
+   +'<div class="prow"><button class="tb" type="button" id="scancel">Cancel</button><button class="primary" type="button" id="sapply" style="flex:2">Apply</button></div>';
+  els.sh.innerHTML=h; els.sh.classList.add("on"); els.bg.classList.add("on");
+  var tabs=els.sh.querySelectorAll(".stab");
+  for(i=0;i<tabs.length;i++) tabs[i].onclick=function(){openSheet(ski,+this.dataset.sti)};
+  var opts=els.sh.querySelectorAll(".opt");
+  for(i=0;i<opts.length;i++) opts[i].onclick=function(){
+    for(var k=0;k<opts.length;k++) opts[k].setAttribute("aria-pressed","false");
+    this.setAttribute("aria-pressed","true");
+  };
+  els.sh.querySelector("#scancel").onclick=closeSheet;
+  els.sh.querySelector("#sapply").onclick=function(){applySheet(ski,sti)};
+}
+function applySheet(ski,sti){
+  var sh=document.getElementById("sheet");
+  var sel=sh.querySelector('.opt[aria-pressed="true"]');
+  var v=sel?+sel.dataset.v:0;
+  var note=sh.querySelector("#snote").value.trim();
+  var sk=S.skills[ski], L=ACT;
+  var st= sti<0 ? sk.direct : sk.steps[sti];
+  var prev=st.v[L], prevQ=sk.q[L], prevNote=st.notes[String(L)];
+  var hadT=S.touched?S.touched[touchKey(sk.n,L)]:undefined;
+  st.v[L]=v;
+  if(note) st.notes[String(L)]=note; else delete st.notes[String(L)];
+  if(v!==0) sk.q[L]=0;
+  touch(sk.n,L); saveLocal(); buzz(10); closeSheet();
+  var lbl=sk.n+(sti>=0?' '+stepCode(sk.steps[sti].n):'')+' set to '+(v===-1?'n/a':(v===0?'blank':v+' '+STAGES[v]))+' at '+levName(L);
+  showUndo(lbl,function(){
+    st.v[L]=prev; sk.q[L]=prevQ;
+    if(prevNote===undefined) delete st.notes[String(L)]; else st.notes[String(L)]=prevNote;
+    if(S.touched){if(hadT===undefined) delete S.touched[touchKey(sk.n,L)]; else S.touched[touchKey(sk.n,L)]=hadT}
+    saveLocal(); if(VIEW==="log") renderLog(true); else repaint();
+  });
+  if(VIEW==="log") renderLog(true); else repaint();
+}
+
+/* ---------- export / import ---------- */
+function exportJSON(){return JSON.stringify(S).replace(/</g,"\\u003c")}
+function openDataSheet(){
+  var els=sheetEls();
+  var h='<span class="pt">'+esc(S.dog)+'</span><div class="pn">Export / Import matrix JSON</div>'
+   +'<p class="dnote">Export gives you this dog\'s state block — paste it straight into the desktop matrix file\'s <code>&lt;script id="state"&gt;</code> to merge a session back. It round-trips unchanged.</p>'
+   +'<div class="prow" style="flex-wrap:wrap"><button class="tb" type="button" id="dcopy">Copy JSON</button>'
+   +(HOSTED?'':'<button class="tb" type="button" id="ddl">Download .json</button>')
+   +'</div>'
+   +'<label for="dimp">Import — paste a matrix JSON</label>'
+   +'<textarea id="dimp" placeholder=\'{"dog": "Harold", "levels": […], "skills": […]}\'></textarea>'
+   +'<div class="prow"><button class="tb" type="button" id="dclose">Close</button><button class="primary" type="button" id="dimport" style="flex:2">Import</button></div>'
+   +'<p class="dnote" id="dmsg" role="status"></p>';
+  els.sh.innerHTML=h; els.sh.classList.add("on"); els.bg.classList.add("on");
+  var msg=function(t){els.sh.querySelector("#dmsg").textContent=t};
+  els.sh.querySelector("#dclose").onclick=closeSheet;
+  els.sh.querySelector("#dcopy").onclick=function(){
+    var j=exportJSON();
+    var fallback=function(){els.sh.querySelector("#dimp").value=j; msg("Clipboard blocked — the JSON is in the box below; select all and copy.")};
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText)
+        navigator.clipboard.writeText(j).then(function(){msg("Copied — paste into the desktop matrix state block.")},fallback);
+      else fallback();
+    }catch(e){fallback()}
+  };
+  var dl=els.sh.querySelector("#ddl");
+  if(dl) dl.onclick=function(){
+    try{
+      var blob=new Blob([exportJSON()],{type:"application/json"});
+      var a=document.createElement("a");
+      a.href=URL.createObjectURL(blob); a.download=S.dog.toLowerCase()+"-skills-matrix.json";
+      document.body.appendChild(a); a.click(); a.remove();
+      msg("Downloaded "+S.dog.toLowerCase()+"-skills-matrix.json");
+    }catch(e){msg("Download failed — use Copy JSON instead.")}
+  };
+  els.sh.querySelector("#dimport").onclick=function(){
+    var raw=els.sh.querySelector("#dimp").value.trim();
+    if(!raw){msg("Paste a matrix JSON first."); return}
+    var obj=null;
+    try{obj=JSON.parse(raw)}catch(e){msg("Not valid JSON: "+e.message); return}
+    obj=normalize(obj);
+    if(!obj||!Array.isArray(obj.skills)){msg("That doesn't look like a matrix state — it needs \"dog\", \"levels\" and \"skills\"."); return}
+    obj._ts=Date.now();
+    lsSet("dog."+obj.dog,JSON.stringify(obj));
+    S=obj; lsSet("lastDog",S.dog); BASE=JSON.stringify(S); dirty=false;
+    ACT=predictLevel(); closeSheet(); draw();
+  };
+}
+function switchDog(d){
+  saveLocal();
+  S=loadDog(d); lsSet("lastDog",d);
+  BASE=JSON.stringify(S); dirty=false;
+  ACT=predictLevel();
+  draw();
+}
+
+/* ---------- save bar ---------- */
+function savebar(){
+  var bar=document.getElementById("savebar");
+  if(!bar){bar=document.createElement("div"); bar.id="savebar"; document.body.appendChild(bar)}
+  if(VIEW==="log"){bar.style.display="none"; return}
+  bar.style.display="";
+  var when = S.savedAt ? ("Last saved "+S.savedAt) : "Not saved yet — seeded from session notes";
+  var badge;
+  if(api) badge = ro ? '<span class="badge">Read only</span>'
+    : dirty ? '<span class="badge dirty">Unsaved changes</span>' : '<span class="badge ok">Saved</span>';
+  else badge='<span class="badge ok">Saved on this device</span>';
+  bar.innerHTML = badge + '<span class="st">'+esc(when)+'</span>'
+    + (api&&!ro ? '<button class="primary" id="dosave"'+(dirty?'':' disabled')+'>Save changes</button>' : '');
+  var b=document.getElementById("dosave"); if(b) b.onclick=doSave;
+}
+function buildDoc(){
+  var css=document.getElementById("css").textContent;
+  var app=document.getElementById("app").textContent;
+  var json=JSON.stringify(S).replace(/</g,"\\u003c");
+  var close="<\/script>";
+  return "<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n"
+   +"<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,viewport-fit=cover\">\n"
+   +"<meta name=\"theme-color\" content=\"#18377A\">\n"
+   +"<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n"
+   +"<meta name=\"mobile-web-app-capable\" content=\"yes\">\n"
+   +"<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black-translucent\">\n"
+   +"<meta name=\"apple-mobile-web-app-title\" content=\"GDG\">\n"
+   +"<title>"+esc(S.dog)+"'s Skills Matrix</title>\n"
+   +"<link rel=\"manifest\" href=\"./manifest.json\">\n"
+   +"<link rel=\"apple-touch-icon\" href=\"./icon-180.png\">\n"
+   +"<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n"
+   +"<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n"
+   +"<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap\">\n"
+   +"<style id=\"css\">"+css+"</style>\n</head>\n<body>\n"
+   +"<div id=\"root\"></div>\n<div id=\"tip\" role=\"tooltip\"></div>\n<div id=\"pick\" role=\"dialog\" aria-label=\"Set proficiency\"></div>\n"
+   +"<script id=\"state\" type=\"application/json\">\n"+json+"\n"+close+"\n"
+   +"<script id=\"app\">"+app+close+"\n</body>\n</html>";
+}
+function doSave(){
+  if(!api||ro) return;
+  var btn=document.getElementById("dosave"); if(btn){btn.disabled=true; btn.textContent="Saving…"}
+  S.savedAt=stamp();
+  api.publish(buildDoc()).then(function(){
+    dirty=false; BASE=JSON.stringify(S); saveLocal(); savebar();
+  }).catch(function(err){
+    var c=err&&err.code;
+    if(c==="conflict") return;
+    if(c==="not_writer"||c==="not_granted"||c==="not_declared"||c==="capability_disabled"){ro=true; savebar(); return}
+    S.savedAt=null; savebar();
+    var b=document.getElementById("dosave"); if(b){b.textContent="Save failed — retry"}
+  });
+}
+
+/* ---------- tooltip ---------- */
+var tip=document.getElementById("tip");
+function showTip(e){
+  var b=e.target.closest?e.target.closest(".box"):null; if(!b||!b.dataset.stage) return;
+  if(document.getElementById("pick").classList.contains("on")) return;
+  tip.innerHTML='<span class="tt">'+esc(b.dataset.loc)+'</span><span class="ts">'+esc(b.dataset.k)+'</span>'
+   +'<div style="margin-bottom:4px">'+esc(b.dataset.stage)+'</div>'
+   +(b.dataset.note?'<div style="color:var(--ink-2)">'+esc(b.dataset.note)+'</div>':'');
+  tip.classList.add("on");
+  var r=b.getBoundingClientRect(), t=tip.getBoundingClientRect();
+  var x=Math.max(8,Math.min(r.left+r.width/2-t.width/2, innerWidth-t.width-8));
+  var y=r.top-t.height-9; if(y<8) y=r.bottom+9;
+  tip.style.left=x+"px"; tip.style.top=y+"px";
+}
+function hideTip(){tip.classList.remove("on")}
+document.addEventListener("mouseover",showTip);
+document.addEventListener("mouseout",hideTip);
+document.addEventListener("focusin",showTip);
+document.addEventListener("focusout",hideTip);
+addEventListener("scroll",hideTip,true);
+
+/* ---------- boot ---------- */
+draw();
+if(HOSTED){
+  claude.use("artifact").then(function(a){ api=a; if(!a){api=null} savebar() })
+    .catch(function(){ savebar() });
+}
+if("serviceWorker" in navigator && (location.protocol==="https:"||location.hostname==="localhost"||location.hostname==="127.0.0.1")){
+  try{ navigator.serviceWorker.register("./sw.js").catch(function(){}) }catch(e){}
+}
+})();
+</script>
+</body>
+</html>
