@@ -26,12 +26,13 @@
   --carry:#DDE5F4; --carry-2:#EDF1FA;
   --na:#E3E0D5; --nai:#87836F; --nah:#D0CBB9;
   --s0:#EBEAE3; --s0i:#9A9A90;
-  --s1:#DDE5F4; --s1i:#1B2436;
-  --s2:#B6C7E6; --s2i:#16203A;
-  --s3:#89A4D4; --s3i:#101B33;
-  --s4:#547ABD; --s4i:#FFFFFF;
-  --s5:#2C539E; --s5i:#FFFFFF;
+  --s1:#E9F0FB; --s1i:#1B2436;
+  --s2:#9CBEEA; --s2i:#16203A;
+  --s3:#6193D6; --s3i:#0E1B33;
+  --s4:#345FB4; --s4i:#FFFFFF;
+  --s5:#18377A; --s5i:#FFFFFF;
   --s6:#18377A; --s6i:#FFFFFF;
+  --gen:#1E6B4E; --geni:#FFFFFF;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --ground:#0E1117; --surface:#151922; --surface-2:#1B202B; --surface-3:#191E28;
@@ -43,12 +44,13 @@
   --carry:#232F4A; --carry-2:#1A2033;
   --na:#1C2028; --nai:#697285; --nah:#262B35;
   --s0:#191D26; --s0i:#5A6274;
-  --s1:#1F2B45; --s1i:#93A6C8;
-  --s2:#273C68; --s2i:#B4C4E2;
-  --s3:#325295; --s3i:#DCE5F6;
-  --s4:#4A75C6; --s4i:#0B0F16;
-  --s5:#7099E0; --s5i:#0B0F16;
+  --s1:#202C4C; --s1i:#93A6C8;
+  --s2:#30508F; --s2i:#C6D5EE;
+  --s3:#4C7BCC; --s3i:#0B0F16;
+  --s4:#7FA8EC; --s4i:#0B0F16;
+  --s5:#B7D0F8; --s5i:#0B0F16;
   --s6:#A0BEF2; --s6i:#0B0F16;
+  --gen:#7FCCA6; --geni:#0B0F16;
 }}
 :root[data-theme="dark"]{
   --ground:#0E1117; --surface:#151922; --surface-2:#1B202B; --surface-3:#191E28;
@@ -60,12 +62,13 @@
   --carry:#232F4A; --carry-2:#1A2033;
   --na:#1C2028; --nai:#697285; --nah:#262B35;
   --s0:#191D26; --s0i:#5A6274;
-  --s1:#1F2B45; --s1i:#93A6C8;
-  --s2:#273C68; --s2i:#B4C4E2;
-  --s3:#325295; --s3i:#DCE5F6;
-  --s4:#4A75C6; --s4i:#0B0F16;
-  --s5:#7099E0; --s5i:#0B0F16;
+  --s1:#202C4C; --s1i:#93A6C8;
+  --s2:#30508F; --s2i:#C6D5EE;
+  --s3:#4C7BCC; --s3i:#0B0F16;
+  --s4:#7FA8EC; --s4i:#0B0F16;
+  --s5:#B7D0F8; --s5i:#0B0F16;
   --s6:#A0BEF2; --s6i:#0B0F16;
+  --gen:#7FCCA6; --geni:#0B0F16;
 }
 *{box-sizing:border-box}
 body{margin:0; background:var(--ground); color:var(--ink);
@@ -307,7 +310,12 @@ select.tbsel{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spaci
 .dnote{font-size:12.5px; color:var(--ink-2); margin:8px 0 0; line-height:1.5}
 .dnote code{font-family:"IBM Plex Mono",monospace; font-size:11px}
 .ptag{flex:0 0 auto; font-family:"IBM Plex Mono",monospace; font-size:9px; letter-spacing:.06em; text-transform:uppercase;
-  background:var(--s6); color:var(--s6i); border-radius:2px; padding:2px 6px; white-space:nowrap}
+  background:var(--gen); color:var(--geni); border-radius:2px; padding:2px 6px; white-space:nowrap}
+.gbar{position:sticky; top:0; z-index:30; background:var(--ground); display:flex; align-items:center; gap:8px;
+  max-width:1180px; margin:0 auto; padding:10px 28px; padding-top:calc(10px + env(safe-area-inset-top));
+  border-bottom:1px solid var(--rule)}
+@media (max-width:640px){.gbar{padding-left:16px; padding-right:16px}}
+.box.gen,.mbadge.gen{background:var(--gen); color:var(--geni)}
 </style>
 </head>
 <body>
@@ -365,7 +373,16 @@ function loadDog(dog){
   var stored=null, raw=lsGet("dog."+dog);
   if(raw){try{stored=normalize(JSON.parse(raw))}catch(e){stored=null}}
   var seed=(SEED&&SEED.dog===dog)?SEED:(SEEDS[dog]?normalize(SEEDS[dog]):null);
-  if(stored&&seed) return ((stored._ts||0)>=(seed._ts||0))?stored:seed;
+  if(stored&&seed){
+    /* a blank state saved before this dog's seed shipped must not shadow the seed —
+       adopt the seed but keep any level names and touch history already entered */
+    if(!stored.skills.length&&seed.skills.length){
+      for(var i=0;i<5;i++) if((stored.levels[i]||"").trim()&&!(seed.levels[i]||"").trim()) seed.levels[i]=stored.levels[i];
+      if(stored.touched) seed.touched=stored.touched;
+      return seed;
+    }
+    return ((stored._ts||0)>=(seed._ts||0))?stored:seed;
+  }
   return stored||seed||blankState(dog);
 }
 var S=loadDog(lsGet("lastDog")||(SEED&&SEED.dog)||"Harold");
@@ -526,7 +543,7 @@ function scalesHTML(){
    +'<div class="srow"><div class="swatch" style="background:var(--s0);color:var(--s0i)">·</div><div><div class="sname">Not yet tested</div><div class="sdesc">Never attempted here. Blank — the gaps are the point.</div></div></div></div>';
   h+='<div class="scalecard"><h3>Proficiency stage</h3><p class="note">Five stages, set from the cell picker. Generalised is earned, never typed.</p>';
   stage.forEach(function(r){h+='<div class="srow"><div class="swatch" style="background:var(--s'+r[0]+');color:var(--s'+r[0]+'i)">'+r[0]+'</div><div><div class="sname">'+r[1]+'</div><div class="sdesc">'+r[2]+'</div></div></div>'});
-  h+='<div class="srow"><div class="swatch" style="background:var(--s6);color:var(--s6i)">★</div><div><div class="sname">Generalised — calculated, not set</div><div class="sdesc">A skill shows Generalised once its last step is <strong>Fluent at every level this dog has in use</strong> — two named levels means two, five means five. Fluent everywhere it can be trained: n/a levels are excluded, an untested level counts against it. There is no cell input for it.</div></div></div>';
+  h+='<div class="srow"><div class="swatch" style="background:var(--gen);color:var(--geni)">★</div><div><div class="sname">Generalised — calculated, not set</div><div class="sdesc">A skill shows Generalised once its last step is <strong>Fluent at every level this dog has in use</strong> — two named levels means two, five means five. Fluent everywhere it can be trained: n/a levels are excluded, an untested level counts against it. There is no cell input for it.</div></div></div>';
   h+='</div><div class="scalecard"><h3>'+esc(S.dog)+'\'s levels</h3>'
    +'<p class="note">Up to five, easiest first. Name them for real places — <strong>type over these</strong>. Leave one blank to switch that level off.</p>';
   for(var i=0;i<5;i++){
@@ -575,7 +592,10 @@ function dogOptions(){
 /* ---------- desktop matrix render ---------- */
 function render(){
   var open=openCount(), isH=(S.dog==="Harold");
-  var h='<div class="wrap"><header class="masthead">'
+  var h='<div class="sabg"></div><div class="gbar"><select class="dsel" id="dogsel2" aria-label="Dog">'+dogOptions()+'</select>'
+   +'<span style="flex:1"></span><button class="tb" type="button" id="dexport">Data</button>'
+   +'<button class="tb" type="button" id="toPhone">Phone log</button></div>';
+  h+='<div class="wrap"><header class="masthead">'
    +'<span class="eyebrow">Good Dog Gordon · Skills Matrix'+(isH?' · Template v5 mockup':'')+'</span>'
    +'<h1>'+esc(S.dog)+"'s Skills Matrix</h1>";
   if(isH){
@@ -586,7 +606,7 @@ function render(){
   }else{
     h+='<p class="sub">'+(S.skills.length
       ? S.skills.length+' documented skills, <strong>'+totalSteps()+' documented steps</strong>, scored across '+levCount()+' levels. <strong>Name the levels and click any cell to set it.</strong>'
-      : 'No documented skills loaded for '+esc(S.dog)+' yet. Skill and step names only ever come from the exercise library — nothing is pre-filled or guessed here. Import a matrix JSON via <strong>Export / Import</strong> below.')+'</p>'
+      : 'No documented skills for '+esc(S.dog)+' yet — rows appear once their Exercise Tracker has ✓ in-library exercises. Skill and step names only ever come from the exercise library; nothing is guessed. (Switch dog or view with the bar above.)')+'</p>'
      +'<div class="chips"><span class="chip">'+S.skills.length+' skills</span><span class="chip">'+totalSteps()+' steps</span><span class="chip">'+levCount()+' levels in use</span>'
      +'<span class="chip'+(open?' warn':'')+'">'+open+' cell'+(open===1?'':'s')+' still open</span></div>';
   }
@@ -605,9 +625,6 @@ function render(){
    +'<p class="lede">Click a skill to open its steps, then <strong>click any step cell</strong> to set the stage and write a variation note. Skill-row cells are calculated — they update themselves.</p>'
    +'<div class="toolbar"><button class="tb" id="expandAll">Expand all steps</button><button class="tb" id="collapseAll">Collapse all</button>'
    +'<button class="tb" id="openOnly">Show open cells only</button>'
-   +'<select class="tbsel" id="dogsel2" aria-label="Dog">'+dogOptions()+'</select>'
-   +'<button class="tb" id="dexport">Export / Import</button>'
-   +'<button class="tb" id="toPhone">Phone log</button>'
    +'<span class="hint">Hover a cell for its note</span></div>'
    +'<div class="matrixwrap"><table><thead><tr><th class="h-skill">Skill · Library name</th>';
   for(var i=0;i<5;i++){
@@ -871,7 +888,7 @@ function chipHTML(r){
      +'<span class="mleft"><span class="mname">'+name+'</span>'
      +'<span class="msub">'+(proofed?'Generalised — Fluent at every level in use':'Fluent here'+(stepped?' — '+stepCode(sk.steps[e.sti].n)+' '+esc(stepShort(sk.steps[e.sti].n)):''))+'</span>'
      +(nl>=0&&!proofed?'<span class="mgo" data-go="'+nl+'">next: '+levCode(nl)+' · '+esc(levName(nl))+' →</span>':'')
-     +'</span><span class="mright"><span class="box mbadge" data-s="'+(proofed?'6':'5')+'">'+(proofed?'★ Generalised':'5 Fluent')+'</span></span></button>'+more+'</div>';
+     +'</span><span class="mright"><span class="box mbadge'+(proofed?' gen':'')+'"'+(proofed?'':' data-s="5"')+'>'+(proofed?'★ Generalised':'5 Fluent')+'</span></span></button>'+more+'</div>';
   }
   var v=e.v, badgeS=e.q?"q":v, nextV=(v===0?1:Math.min(5,v+1));
   var sub=stepped ? stepCode(sk.steps[e.sti].n)+' — '+esc(stepShort(sk.steps[e.sti].n)) : 'no steps — scored direct';
