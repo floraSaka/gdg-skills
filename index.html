@@ -326,7 +326,7 @@ select.tbsel{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spaci
 <script id="app">
 (function(){
 "use strict";
-var STAGES=["Not yet tested","Introduced","Learning","Progressing","Reliable","Fluent","Proofed"];
+var STAGES=["Not yet tested","Introduced","Learning","Progressing","Reliable","Fluent","Generalised"];
 var DOGS=["Aki","Archie","Flower","Fred","Griff","Harold","Rechka","Rocki","Kobe"];
 var HOSTED=!!(window.claude&&window.claude.use);
 
@@ -346,7 +346,7 @@ function normalize(st){
     for(var j=0;j<sk.steps.length;j++){
       var s2=sk.steps[j];
       s2.v=(s2.v||[]).slice(0,5); while(s2.v.length<5) s2.v.push(0);
-      for(k=0;k<5;k++) if(s2.v[k]===6) s2.v[k]=5;   /* Proofed is earned now, not typed: legacy 6 = Fluent */
+      for(k=0;k<5;k++) if(s2.v[k]===6) s2.v[k]=5;   /* Generalised is earned now, not typed: legacy 6 (old Proofed) = Fluent */
       s2.notes=s2.notes||{};
     }
     if(!sk.steps.length){
@@ -429,7 +429,7 @@ function totalSteps(){var t=0;for(var i=0;i<S.skills.length;i++)t+=S.skills[i].s
 
 /* ---------- working edge (mobile one-tap logging) ---------- */
 function edgeInfo(sk,L){
-  /* input scale is 1..5 — Fluent tops out a cell; Proofed is earned skill-wide, never typed */
+  /* input scale is 1..5 — Fluent tops out a cell; Generalised is earned skill-wide, never typed */
   if(!sk.steps.length){
     var v=sk.direct.v[L];
     if(v===-1) return {na:true};
@@ -524,9 +524,9 @@ function scalesHTML(){
    +'<div class="srow"><div class="swatch naSw">n/a</div><div><div class="sname">Not applicable</div><div class="sdesc"><strong>Can\'t</strong> be trained at this level, as opposed to hasn\'t been yet — Hand Touch on the balcony, where he can\'t be off lead. Deliberately excluded, so it stops reading as an outstanding gap. Set from the cell picker; the skill row goes n/a once every step at that level is.</div></div></div>'
    +'<div class="srow"><div class="swatch qc">?</div><div><div class="sname">Worked here, step not recorded</div><div class="sdesc">Sessions happened at this location but the notes don\'t say which step. Score a step to clear it.</div></div></div>'
    +'<div class="srow"><div class="swatch" style="background:var(--s0);color:var(--s0i)">·</div><div><div class="sname">Not yet tested</div><div class="sdesc">Never attempted here. Blank — the gaps are the point.</div></div></div></div>';
-  h+='<div class="scalecard"><h3>Proficiency stage</h3><p class="note">Five stages, set from the cell picker. Proofed is earned, never typed.</p>';
+  h+='<div class="scalecard"><h3>Proficiency stage</h3><p class="note">Five stages, set from the cell picker. Generalised is earned, never typed.</p>';
   stage.forEach(function(r){h+='<div class="srow"><div class="swatch" style="background:var(--s'+r[0]+');color:var(--s'+r[0]+'i)">'+r[0]+'</div><div><div class="sname">'+r[1]+'</div><div class="sdesc">'+r[2]+'</div></div></div>'});
-  h+='<div class="srow"><div class="swatch" style="background:var(--s6);color:var(--s6i)">★</div><div><div class="sname">Proofed — calculated, not set</div><div class="sdesc">A skill shows Proofed once its last step is <strong>Fluent at every level in use</strong> — it has generalised. Levels marked n/a are excluded; an untested level counts against it. There is no cell input for it any more.</div></div></div>';
+  h+='<div class="srow"><div class="swatch" style="background:var(--s6);color:var(--s6i)">★</div><div><div class="sname">Generalised — calculated, not set</div><div class="sdesc">A skill shows Generalised once its last step is <strong>Fluent at every level this dog has in use</strong> — two named levels means two, five means five. Fluent everywhere it can be trained: n/a levels are excluded, an untested level counts against it. There is no cell input for it.</div></div></div>';
   h+='</div><div class="scalecard"><h3>'+esc(S.dog)+'\'s levels</h3>'
    +'<p class="note">Up to five, easiest first. Name them for real places — <strong>type over these</strong>. Leave one blank to switch that level off.</p>';
   for(var i=0;i<5;i++){
@@ -653,7 +653,7 @@ function buildGrid(){
       grid.appendChild(cr);
     }
     var d=derive(sk), id="g"+(uid++), stepless=!sk.steps.length;
-    var ptag=skillProofed(sk)?'<span class="ptag">★ Proofed</span>':'';
+    var ptag=skillProofed(sk)?'<span class="ptag">★ Generalised</span>':'';
     var tr=document.createElement("tr"); tr.className="skill"; tr.dataset.group=id;
     var sc=document.createElement("td"); sc.className="skillcell";
     if(stepless){
@@ -869,9 +869,9 @@ function chipHTML(r){
     var nl=nextLevel(L);
     return '<div class="mskill"><button class="mmain" type="button" data-ski="'+r.i+'" data-mode="full">'
      +'<span class="mleft"><span class="mname">'+name+'</span>'
-     +'<span class="msub">'+(proofed?'Proofed — Fluent at every level':'Fluent here'+(stepped?' — '+stepCode(sk.steps[e.sti].n)+' '+esc(stepShort(sk.steps[e.sti].n)):''))+'</span>'
+     +'<span class="msub">'+(proofed?'Generalised — Fluent at every level in use':'Fluent here'+(stepped?' — '+stepCode(sk.steps[e.sti].n)+' '+esc(stepShort(sk.steps[e.sti].n)):''))+'</span>'
      +(nl>=0&&!proofed?'<span class="mgo" data-go="'+nl+'">next: '+levCode(nl)+' · '+esc(levName(nl))+' →</span>':'')
-     +'</span><span class="mright"><span class="box mbadge" data-s="'+(proofed?'6':'5')+'">'+(proofed?'★ Proofed':'5 Fluent')+'</span></span></button>'+more+'</div>';
+     +'</span><span class="mright"><span class="box mbadge" data-s="'+(proofed?'6':'5')+'">'+(proofed?'★ Generalised':'5 Fluent')+'</span></span></button>'+more+'</div>';
   }
   var v=e.v, badgeS=e.q?"q":v, nextV=(v===0?1:Math.min(5,v+1));
   var sub=stepped ? stepCode(sk.steps[e.sti].n)+' — '+esc(stepShort(sk.steps[e.sti].n)) : 'no steps — scored direct';
