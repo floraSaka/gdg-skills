@@ -1,5 +1,5 @@
 /* GDG Skills — cache-first app shell. Bump CACHE on every deploy that changes a shell file. */
-var CACHE = "gdg-skills-v9";
+var CACHE = "gdg-skills-v10";
 var SHELL = ["./", "./index.html", "./manifest.json", "./icon-180.png", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", function (e) {

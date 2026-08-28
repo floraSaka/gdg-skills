@@ -320,9 +320,6 @@ select.tbsel{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spaci
 .lvrow{display:flex; align-items:center; gap:10px; margin:8px 0}
 .lvrow .lcode{flex:0 0 32px}
 .lvrow .levin{flex:1}
-.mtoday{font-size:12px; line-height:1.6; color:var(--ink-2); background:var(--surface); border:1px solid var(--rule);
-  border-left:3px solid var(--navy); border-radius:6px; padding:9px 12px; font-family:"IBM Plex Mono",monospace}
-.mtoday strong{color:var(--ink)}
 .mfootnote .stale{color:var(--amber)}
 .mdots{display:inline-flex; gap:3px; margin:3px 0 1px}
 .mdots i{width:10px; height:10px; border-radius:2px; background:var(--s0); border:1px solid var(--rule)}
@@ -971,14 +968,6 @@ function renderLog(keepScroll){
   }else{
     h+='<p class="mmsg">No levels named yet for '+esc(S.dog)+' — name the places this dog trains, easiest first.<br>'
      +'<button class="tb" type="button" id="mlvbtn" style="margin-top:10px">Name '+esc(S.dog)+"'s levels</button></p>";
-  }
-  var d0=new Date(); d0.setHours(0,0,0,0);
-  var today=(S.log||[]).filter(function(en){return en.t>=d0.getTime()&&levUsed(en.li)});
-  if(today.length){
-    var parts=today.slice(-5).map(function(en){
-      return esc(en.n)+(en.s?' '+en.s:'')+' → '+(en.to===-1?'n/a':(en.to===0?'–':en.to))+' ('+levCode(en.li)+')';
-    });
-    h+='<div class="mtoday"><strong>Today · '+today.length+' logged</strong><br>'+(today.length>5?'… ':'')+parts.join(' · ')+'</div>';
   }
   if(!S.skills.length){
     h+='<p class="mmsg">No skills loaded for '+esc(S.dog)+' yet. Skill and step names only ever come from the documented exercise library — nothing is invented here. Import a matrix JSON via <strong>Data</strong>.</p>';
