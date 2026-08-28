@@ -330,6 +330,42 @@ select.tbsel{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spaci
 .mdots i[data-s="5"]{background:var(--s5); border-color:var(--s5)}
 .mdots i[data-s="c"]{background:var(--carry-2); background-image:repeating-linear-gradient(135deg,transparent 0 2px,var(--carry) 2px 4px); border-color:var(--carry)}
 .mdots i[data-s="na"]{background:var(--na); background-image:repeating-linear-gradient(45deg,transparent 0 2px,var(--nah) 2px 3px); border-color:var(--nah)}
+.tbamber{background:var(--amber-bg); border-color:var(--amber-rule); color:var(--amber)}
+.acard{background:var(--surface); border:1px solid var(--rule); border-radius:8px; padding:14px}
+.ahead{font-family:Archivo,system-ui,sans-serif; font-weight:700; font-size:19px; line-height:1.2}
+.ameta{font-size:13px; color:var(--ink-2); line-height:1.5; margin-top:5px}
+.amuted{color:var(--ink-3)}
+.aflag{margin-top:9px; font-size:12.5px; background:var(--amber-bg); border:1px solid var(--amber-rule);
+  color:var(--amber); border-radius:5px; padding:7px 9px; line-height:1.45}
+.aplan{background:var(--surface); border:1px solid var(--rule); border-radius:8px; overflow:hidden}
+.aplan summary{padding:13px 14px; font-weight:600; font-size:14.5px; cursor:pointer; list-style:none}
+.aplan summary::-webkit-details-marker{display:none}
+.aplan summary::after{content:"▾"; float:right; color:var(--ink-3)}
+.aplan[open] summary::after{content:"▴"}
+.apbody{padding:0 14px 14px; font-size:13.5px; line-height:1.55; color:var(--ink-2)}
+.apbody p{margin:0 0 4px}
+.apt{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-3); margin:12px 0 4px}
+.aol,.aul{margin:0; padding-left:20px} .aol li,.aul li{margin-bottom:4px}
+.afail{color:var(--amber); font-weight:600}
+.apbody a{color:var(--navy); font-weight:600}
+.acheck{background:var(--surface); border:1px solid var(--rule); border-radius:8px; padding:13px 14px}
+.acheck.done{border-color:var(--rule-strong)}
+.acn{display:flex; align-items:center; gap:9px; font-weight:600; font-size:15.5px; line-height:1.25}
+.acnum{flex:0 0 auto; width:22px; height:22px; border-radius:50%; background:var(--surface-2); color:var(--ink-3);
+  font-family:"IBM Plex Mono",monospace; font-size:11px; display:grid; place-items:center}
+.actext{font-size:12.5px; color:var(--ink-2); line-height:1.5; margin:7px 0 10px}
+.acbtns{display:flex; gap:8px}
+.acbtns button{flex:1; min-height:52px; border-radius:6px; border:1px solid var(--rule-strong); background:var(--surface-2);
+  font-family:"IBM Plex Mono",monospace; font-size:13px; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--ink-2); cursor:pointer; touch-action:manipulation}
+.acbtns .ayes.on{background:var(--gen); border-color:var(--gen); color:var(--geni)}
+.acbtns .ano.on{background:var(--amber-cell); border-color:var(--amber-rule); color:var(--amber)}
+.acbtns .amid.on{background:var(--s2); border-color:var(--s2); color:var(--s2i)}
+.acbtns .anote{flex:0 0 88px; font-size:11px}
+.acnote{margin-top:9px; font-size:12.5px; color:var(--ink-2); background:var(--surface-3);
+  border-left:3px solid var(--navy); border-radius:4px; padding:8px 10px; line-height:1.45}
+.aout button{min-height:54px}
 </style>
 </head>
 <body>
@@ -343,6 +379,10 @@ select.tbsel{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spaci
 
 <script id="seeds" type="application/json">
 {"Aki": {"dog": "Aki", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Markers & Foundation", "n": "Eye Contact Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Look", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Adaptation (Slower)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Adaptation (Quicker)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Proofing", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Markers", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Marker Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Wait for a Response", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Mark a Sit", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Foundation Cues", "n": "Sit", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Lure the Position", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Add the Cue Word", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Fade the Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Test the Word on Its Own", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Recall", "n": "Recall", "q": [0, 0, 0, 0, 0], "steps": [], "direct": {"v": [0, 0, 0, 0, 0], "notes": {}}}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Full Progression", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Treat on the Floor", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Eye Contact + Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Backwards Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Forward Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Backwards Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Forward Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Check-In Method", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Check\u2011In", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Backwards Walking (Off Lead)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Adding the Lead (Backwards Walking)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Mixing in Forward Walking (On Lead)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Check\u2011In Variation (Advanced)", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap \u00b7 Give \u00b7 Take", "n": "Swap", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Swap for a Toy", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap \u00b7 Give \u00b7 Take", "n": "Take", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Take on Cue", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 \u2018Take\u2019 as a Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 With the Flirt Pole", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap \u00b7 Give \u00b7 Take", "n": "Give", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Release", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 No Hands", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 The Game Becomes the Reward", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}, "Archie": {"dog": "Archie", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Markers & Foundation", "n": "Eye Contact Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Follow and Treat", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Wait for the Look", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Markers", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Marker Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Wait for a Response", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Mark a Sit", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Hand Touch", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Luring", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 No Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Adding the Cue", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Raising Criteria", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Taste Test", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Offer the Choice", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Work Through the Pairs", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Check It", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Use the Hierarchy", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Foundation Cues", "n": "Sit", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Lure the Position", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Add the Cue Word", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Fade the Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Test the Word on Its Own", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Foundation Cues", "n": "Down", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Lure the Position", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Add the Cue Word", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Fade the Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Test the Word on Its Own", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Retrieve", "n": "Retrieve (Two Toy)", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Play Tug First", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Introduce the Retrieve", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Add the Second Toy", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Vary the Reward", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Impulse Control", "n": "Impulse Control - To Have a Treat You Must Leave a Treat", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Closed Fist", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Raise the Difficulty", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Impulse Control", "n": "Clock Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Start at 6 o'clock", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Work 4 and 8 o'clock", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 3 and 9 o'clock: Add the Check-In", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 2 and 10 o'clock", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 12 o'clock", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Full Progression", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Treat on the Floor", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Eye Contact + Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Backwards Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Forward Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Backwards Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Forward Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap \u00b7 Give \u00b7 Take", "n": "Swap", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Swap for a Toy", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap \u00b7 Give \u00b7 Take", "n": "Give", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Release", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 No Hands", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 The Game Becomes the Reward", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap \u00b7 Give \u00b7 Take", "n": "Take", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Take on Cue", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 \u2018Take\u2019 as a Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 With the Flirt Pole", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}, "Flower": {"dog": "Flower", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Markers & Foundation", "n": "Markers", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Marker Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Wait for a Response", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Mark a Sit", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Eye Contact Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Look", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Adaptation (Slower)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Adaptation (Quicker)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Proofing", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Hand Touch", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Luring", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 No Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Adding the Cue", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Raising Criteria", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Dog Games", "n": "Find It", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Easy Finds", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Raise the Difficulty", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Tug", "n": "Tug Official Rules", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Release", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Add the \u2018Take\u2019", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 \u2018Take\u2019 as a Reward for \u2018Give\u2019", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 No Hands", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Tug as a Reward for Obedience Cues", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Settle", "n": "Settle on a Mat", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Settle on the Mat", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Place Mat Near a Chair", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Outside With a Chair", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Separation Anxiety", "n": "Flitting Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Start Flitting", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Not Following Might Pay Off", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Proofing", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Impulse Control", "n": "Impulse Control - To Have a Treat You Must Leave a Treat", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Closed Fist", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Raise the Difficulty", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Recall", "n": "Recall", "q": [0, 0, 0, 0, 0], "steps": [], "direct": {"v": [0, 0, 0, 0, 0], "notes": {}}}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Full Progression", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Treat on the Floor", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Eye Contact + Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Backwards Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Forward Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Backwards Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Forward Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}, "Fred": {"dog": "Fred", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Tug", "n": "Tug Official Rules", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Release", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Add the \u2018Take\u2019", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 \u2018Take\u2019 as a Reward for \u2018Give\u2019", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 No Hands", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Tug as a Reward for Obedience Cues", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Recall", "n": "Recall", "q": [0, 0, 0, 0, 0], "steps": [], "direct": {"v": [0, 0, 0, 0, 0], "notes": {}}}, {"cat": "Recall", "n": "Premack Recall", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Build the Distraction", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Call Him Away", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Pay Out Through You", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Vary Everything", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap \u00b7 Give \u00b7 Take", "n": "Swap", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Swap for a Toy", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}, "Griff": {"dog": "Griff", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Markers & Foundation", "n": "Markers", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Marker Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Wait for a Response", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Mark a Sit", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Separation Anxiety", "n": "Flitting Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Start Flitting", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Not Following Might Pay Off", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Proofing", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Toilet Training", "n": "Toilet Training", "q": [0, 0, 0, 0, 0], "steps": [], "direct": {"v": [0, 0, 0, 0, 0], "notes": {}}}, {"cat": "Equipment Conditioning", "n": "Harness Conditioning", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Introduction", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Clasp Noises", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Moving Towards the Harness", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Hold It Up", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Head Through the Loop", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Fully On, Briefly", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Building Duration", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 8 \u2014 Moving in the Harness", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Equipment Conditioning", "n": "Lead Conditioning", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Introduction", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Clip Noises", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Moving Towards the Lead", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Hold It Up", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Lead to the Ring", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Clipped On, Briefly", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Building Duration", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 8 \u2014 Moving on the Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}, "Rocki": {"dog": "Rocki", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Impulse Control", "n": "Impulse Control - To Have a Treat You Must Leave a Treat", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Closed Fist", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Raise the Difficulty", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Full Progression", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Treat on the Floor", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Eye Contact + Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Backwards Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Forward Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Backwards Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Forward Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}, "Kobe": {"dog": "Kobe", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Markers & Foundation", "n": "Markers", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Marker Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Wait for a Response", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Mark a Sit", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Eye Contact Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Follow and Treat", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Wait for the Look", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Hand Touch", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Luring", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 No Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Adding the Cue", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Raising Criteria", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Foundation Cues", "n": "Sit", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Lure the Position", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Add the Cue Word", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Fade the Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Test the Word on Its Own", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Dog Games", "n": "Find It", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Easy Finds", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Raise the Difficulty", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Settle", "n": "Settle on a Mat", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Settle on the Mat", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Place Mat Near a Chair", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Outside With a Chair", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Settle", "n": "Capturing Settle Around The House", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Capture the Calm", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Separation Anxiety", "n": "Flitting Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Start Flitting", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Not Following Might Pay Off", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Proofing", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Full Progression", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Treat on the Floor", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Eye Contact + Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Backwards Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Forward Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Backwards Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Forward Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}, "Rechka": {"dog": "Rechka", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Markers & Foundation", "n": "Eye Contact Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Look", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Adaptation (Slower)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Adaptation (Quicker)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Proofing", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Full Progression", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Treat on the Floor", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Eye Contact + Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Backwards Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Forward Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Backwards Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Forward Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}}
+</script>
+
+<script id="assess" type="application/json">
+{"id": "lily-2026-08-28", "dog": "Lily", "breed": "Labradoodle", "age": "nearly 6 months", "client": "Katy Vaughan", "clientAlt": "Katy Clare", "clientEmail": "clare_katy@hotmail.com", "clientPhone": "07809152577", "assessor": "Flora Anderson", "date": "28 August 2026", "time": "2pm", "venue": "Thompson's Welling \u2014 meet at the main entrance", "settle": "The pub up the road (walk over for the settle/caf\u00e9 part)", "purpose": "Assistance dog for Katy's daughter \u2014 autism, social & mental health", "tasks": ["Deep / light pressure therapy", "Find an exit", "Alert to signs of anxiety or distress", "Interrupt episodes of self-injurious behaviour or dissociation"], "welfare": "Pawsable's instruction: taskwork a few at a time only \u2014 get one solid before introducing the next. Overloading her is a welfare risk, not just slow training. Not assessed today, but it frames the conversation.", "framing": "This checks POTENTIAL over the next 12\u201318 months, not current polish. She is a ~6-month-old puppy \u2014 she is not supposed to look finished. Never imply she needs lessons with you first in order to pass.", "runOrder": ["Walk in an unusual environment alongside the handler (Thompson's aisles + car park)", "Settle in a seating area, reasonably calmly (the pub)", "Handler goes briefly out of sight \u2014 does she cope?", "You give her a fuss \u2014 do this LAST, once you've read her temperament", "Ideally, some exposure to another dog"], "checks": [{"id": "c1", "short": "Stroked by a stranger", "text": "The dog must be happy to be stroked by a friendly stranger."}, {"id": "c2", "short": "Examined by the trainer", "text": "The dog must be comfortable being examined by the trainer; the dog will be stroked gently and then have its teeth, ears and front feet examined. At this stage it is acceptable for the dog to pull away but must not show any signs of aggression."}, {"id": "c3", "short": "Walking through a crowd", "text": "The dog must be happy to walk through a crowd, remaining under control and not jumping up or being unduly afraid."}, {"id": "c4", "short": "Around another dog", "text": "The dog must be comfortable around another dog, with no signs of aggression."}, {"id": "c5", "short": "Reacting to distractions", "text": "Reacting to distractions, eg a shopping trolley clattering, a clipboard being dropped: the dog can express curiosity or surprise and can be reassured and petted, but must not be panicked, run off or show any aggression, and must recover quickly."}, {"id": "c6", "short": "Accepting novelty", "text": "Accepting novelty or differences \u2014 when coming across an unusual object or somebody behaving or moving in an unexpected manner the dog might be unsure and want to avoid getting too close. This is normal and acceptable, but the dog should be able to relax at a distance and be inquisitive, with the potential to investigate and become accepting with correct handling. Examples: someone in a wheelchair or using a walking frame or stick, a crying child in a pram, a statue of an animal, an umbrella, someone in a high-vis jacket."}, {"id": "c7", "short": "Sits for a hug", "text": "The dog will sit comfortably while the handler and trainer give the dog a hug."}], "instantFail": "Aggression, or acute stress / fear. Nothing else on the checklist is an instant fail on its own.", "good": ["Handler has rapport and control", "Recovers fast from surprises", "Calm when touched by a stranger", "Copes briefly when left", "Wary-but-recoverable around novelty"], "concern": ["Unfocused / highly distracted on lead", "Ineffective handler", "Falls apart when owner steps away", "Fixated on other dogs"], "borderline": "Borderline is not a fail \u2014 offer a free re-assessment within 6 months. You still get paid for today.", "reminders": ["PASS \u2192 hand over the red 'in training' lead slip in person", "Pawsable would love photos/videos for their socials \u2014 only if Katy is happy", "Autistic family: stick to the plan you've shared, short simple instructions, unrushed pace, don't touch the client, skip the small talk", "Never work alone with a family member under 16", "After: write up to katie@pawsable.com \u00b7 \u00a350 + train fare to finance@pawsable.com"], "nameFlag": "Pawsable's referral says Katy VAUGHAN; her emails sign off as Katy CLARE. Check which surname she wants on the form."}
 </script>
 
 <script id="app">
@@ -383,6 +423,14 @@ function normalize(st){
 var SEED=normalize(JSON.parse(document.getElementById("state").textContent));
 var SEEDS={};
 try{var _se=document.getElementById("seeds"); if(_se) SEEDS=JSON.parse(_se.textContent)}catch(e){SEEDS={}}
+var ASSESS=null;
+try{var _ae=document.getElementById("assess"); if(_ae) ASSESS=JSON.parse(_ae.textContent)}catch(e){ASSESS=null}
+var AR={};   /* assessment results: {c1:{v:"yes"|"no", note:""}, outcome:"", notes:"" } */
+function arLoad(){
+  if(!ASSESS) return;
+  try{var raw=lsGet("assess."+ASSESS.id); if(raw) AR=JSON.parse(raw)||{}}catch(e){AR={}}
+}
+function arSave(){ if(ASSESS) lsSet("assess."+ASSESS.id, JSON.stringify(AR)) }
 function loadDog(dog){
   var stored=null, raw=lsGet("dog."+dog);
   if(raw){try{stored=normalize(JSON.parse(raw))}catch(e){stored=null}}
@@ -432,7 +480,7 @@ function buzz(ms){try{if(navigator.vibrate) navigator.vibrate(ms||10)}catch(e){}
 /* ---------- view dispatch ---------- */
 var VIEW=lsGet("view")||((innerWidth<700)?"log":"matrix");
 function setView(v){VIEW=v; lsSet("view",v); draw()}
-function draw(){ if(VIEW==="log") renderLog(); else render(); }
+function draw(){ if(VIEW==="assess"&&ASSESS) renderAssess(); else if(VIEW==="log") renderLog(); else render(); }
 
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function stepCode(t){var m=/(?:Step|Stage)\s*(\d+)/.exec(t); return m?"S"+m[1]:"–"}
@@ -616,7 +664,9 @@ function dogOptions(){
 function render(){
   var open=openCount(), isH=(S.dog==="Harold");
   var h='<div class="sabg"></div><div class="gbar"><select class="dsel" id="dogsel2" aria-label="Dog">'+dogOptions()+'</select>'
-   +'<span style="flex:1"></span><button class="tb" type="button" id="dexport">Data</button>'
+   +'<span style="flex:1"></span>'
+   +(ASSESS?'<button class="tb tbamber" type="button" id="toAssess2">Assess</button>':'')
+   +'<button class="tb" type="button" id="dexport">Data</button>'
    +'<button class="tb" type="button" id="toPhone">Phone log</button></div>';
   h+='<div class="wrap"><header class="masthead">'
    +'<span class="eyebrow">Good Dog Gordon · Skills Matrix'+(isH?' · Template v5 mockup':'')+'</span>'
@@ -805,6 +855,7 @@ function wire(){
   var tp=document.getElementById("toPhone"); if(tp) tp.onclick=function(){setView("log")};
   var ds=document.getElementById("dogsel2"); if(ds) ds.onchange=function(){switchDog(this.value)};
   var de=document.getElementById("dexport"); if(de) de.onclick=openDataSheet;
+  var ta2=document.getElementById("toAssess2"); if(ta2) ta2.onclick=function(){setView("assess")};
 }
 
 /* ---------- picker (desktop) ---------- */
@@ -956,6 +1007,7 @@ function renderLog(keepScroll){
   var h='<div class="mob"><div class="sabg"></div>';
   h+='<header class="mhead"><select id="dogsel" class="dsel" aria-label="Dog">'+dogOptions()+'</select>'
    +'<span style="flex:1"></span>'
+   +(ASSESS?'<button class="tb tbamber" id="toAssess" type="button">Assess</button>':'')
    +'<button class="tb" id="mdata" type="button">Data</button>'
    +'<button class="tb" id="toGrid" type="button">Grid</button></header>';
   if(used){
@@ -991,6 +1043,7 @@ function wireLog(){
   var ds=document.getElementById("dogsel"); if(ds) ds.onchange=function(){switchDog(this.value)};
   var tg=document.getElementById("toGrid"); if(tg) tg.onclick=function(){setView("matrix")};
   var md=document.getElementById("mdata"); if(md) md.onclick=openDataSheet;
+  var ta=document.getElementById("toAssess"); if(ta) ta.onclick=function(){setView("assess")};
   var chips=document.querySelectorAll(".lch:not(.lchedit)");
   for(var i=0;i<chips.length;i++) chips[i].onclick=function(){ACT=+this.dataset.li; renderLog(true)};
   var lv1=document.getElementById("mlv"); if(lv1) lv1.onclick=openLevelsSheet;
@@ -1213,11 +1266,137 @@ function switchDog(d){
   draw();
 }
 
+/* ---------- Pawsable initial suitability assessment ---------- */
+function assessSummary(){
+  var A=ASSESS, yes=0, no=0, i, lines=[];
+  for(i=0;i<A.checks.length;i++){
+    var r=AR[A.checks[i].id]||{};
+    if(r.v==="yes") yes++; else if(r.v==="no") no++;
+  }
+  lines.push("PAWSABLE INITIAL SUITABILITY ASSESSMENT");
+  lines.push("Dog: "+A.dog+" ("+A.breed+", "+A.age+")");
+  lines.push("Pawsable client: "+A.client);
+  lines.push("Assessor: "+A.assessor);
+  lines.push("Date: "+A.date+"   Venue: "+A.venue);
+  lines.push("");
+  for(i=0;i<A.checks.length;i++){
+    var c=A.checks[i], r2=AR[c.id]||{};
+    lines.push((i+1)+". "+c.short+" — "+(r2.v==="yes"?"YES":(r2.v==="no"?"NO":"— not recorded"))+(r2.note?("  ["+r2.note+"]"):""));
+  }
+  lines.push("");
+  lines.push("Recorded: "+yes+" yes, "+no+" no, "+(A.checks.length-yes-no)+" not recorded.");
+  if(AR.outcome) lines.push("Outcome: "+AR.outcome.toUpperCase());
+  if(AR.notes) lines.push("Notes: "+AR.notes);
+  return lines.join("\n");
+}
+function renderAssess(keepScroll){
+  var sy=window.scrollY, A=ASSESS, i;
+  var yes=0,no=0,unset=0;
+  for(i=0;i<A.checks.length;i++){var r=AR[A.checks[i].id]||{}; if(r.v==="yes")yes++; else if(r.v==="no")no++; else unset++}
+  var h='<div class="mob"><div class="sabg"></div>';
+  h+='<header class="mhead"><strong style="font-family:Archivo,sans-serif;font-size:18px">Assessment</strong>'
+   +'<span style="flex:1"></span><button class="tb" type="button" id="aBack">Skills app</button></header>';
+
+  h+='<div class="acard"><div class="ahead">'+esc(A.dog)+' · '+esc(A.breed)+' · '+esc(A.age)+'</div>'
+   +'<div class="ameta">'+esc(A.client)+' · '+esc(A.date)+' · '+esc(A.time)+'<br>'+esc(A.venue)
+   +'<br><span class="amuted">Settle: '+esc(A.settle)+'</span></div>'
+   +'<div class="ameta amuted">'+esc(A.purpose)+'</div>'
+   +'<div class="aflag">⚠ '+esc(A.nameFlag)+'</div></div>';
+
+  h+='<details class="aplan"><summary>Plan · run order · what counts</summary><div class="apbody">';
+  h+='<div class="apt">Run in this order</div><ol class="aol">';
+  A.runOrder.forEach(function(s){h+='<li>'+esc(s)+'</li>'});
+  h+='</ol>';
+  h+='<div class="apt">Framing</div><p>'+esc(A.framing)+'</p>';
+  h+='<div class="apt">Instant fail</div><p class="afail">'+esc(A.instantFail)+'</p>';
+  h+='<div class="apt">Good signs</div><p>'+A.good.map(esc).join(' · ')+'</p>';
+  h+='<div class="apt">Concern flags</div><p>'+A.concern.map(esc).join(' · ')+'</p>';
+  h+='<div class="apt">Borderline</div><p>'+esc(A.borderline)+'</p>';
+  h+='<div class="apt">Her taskwork goals (context, not assessed today)</div><ul class="aul">';
+  A.tasks.forEach(function(s){h+='<li>'+esc(s)+'</li>'});
+  h+='</ul><p class="amuted">'+esc(A.welfare)+'</p>';
+  h+='<div class="apt">Remember</div><ul class="aul">';
+  A.reminders.forEach(function(s){h+='<li>'+esc(s)+'</li>'});
+  h+='</ul><p><a href="./pawsable-checklist.pdf" target="_blank" rel="noopener">Open the official Pawsable form (PDF)</a></p>';
+  h+='</div></details>';
+
+  h+='<div class="mlist">';
+  A.checks.forEach(function(c,ix){
+    var r=AR[c.id]||{};
+    h+='<div class="acheck'+(r.v?' done':'')+'">'
+     +'<div class="acn"><span class="acnum">'+(ix+1)+'</span>'+esc(c.short)+'</div>'
+     +'<div class="actext">'+esc(c.text)+'</div>'
+     +'<div class="acbtns"><button class="ayes'+(r.v==="yes"?' on':'')+'" type="button" data-c="'+c.id+'" data-v="yes">Yes</button>'
+     +'<button class="ano'+(r.v==="no"?' on':'')+'" type="button" data-c="'+c.id+'" data-v="no">No</button>'
+     +'<button class="anote" type="button" data-note="'+c.id+'">'+(r.note?'✎ note':'+ note')+'</button></div>'
+     +(r.note?'<div class="acnote">'+esc(r.note)+'</div>':'')
+     +'</div>';
+  });
+  h+='</div>';
+
+  h+='<div class="acard"><div class="apt">Outcome</div>'
+   +'<div class="acbtns aout">'
+   +'<button class="ayes'+(AR.outcome==="pass"?' on':'')+'" type="button" data-out="pass">Pass</button>'
+   +'<button class="amid'+(AR.outcome==="borderline"?' on':'')+'" type="button" data-out="borderline">Borderline</button>'
+   +'<button class="ano'+(AR.outcome==="fail"?' on':'')+'" type="button" data-out="fail">Fail</button></div>'
+   +'<div class="ameta amuted" style="margin-top:8px">'+yes+' yes · '+no+' no · '+unset+' not recorded</div>'
+   +'<button class="tb" type="button" id="aNotes" style="width:100%;margin-top:10px">'+(AR.notes?'Edit overall notes':'Add overall notes')+'</button>'
+   +(AR.notes?'<div class="acnote">'+esc(AR.notes)+'</div>':'')
+   +'<button class="primary" type="button" id="aCopy" style="width:100%;margin-top:10px">Copy write-up</button>'
+   +'<p class="dnote" id="amsg" role="status"></p></div>';
+  h+='</div>';
+
+  document.getElementById("root").innerHTML=h;
+  var bs=document.querySelectorAll(".acbtns [data-c]");
+  for(i=0;i<bs.length;i++) bs[i].onclick=function(){
+    var id=this.dataset.c, v=this.dataset.v;
+    AR[id]=AR[id]||{};
+    AR[id].v = (AR[id].v===v) ? null : v;
+    arSave(); buzz(10); renderAssess(true);
+  };
+  var ns=document.querySelectorAll("[data-note]");
+  for(i=0;i<ns.length;i++) ns[i].onclick=function(){
+    var id=this.dataset.note, cur=(AR[id]&&AR[id].note)||"";
+    openTextSheet("Note", cur, function(val){AR[id]=AR[id]||{}; AR[id].note=val; arSave(); renderAssess(true)});
+  };
+  var os=document.querySelectorAll("[data-out]");
+  for(i=0;i<os.length;i++) os[i].onclick=function(){
+    AR.outcome = (AR.outcome===this.dataset.out)?null:this.dataset.out; arSave(); buzz(10); renderAssess(true);
+  };
+  document.getElementById("aBack").onclick=function(){setView("log")};
+  document.getElementById("aNotes").onclick=function(){
+    openTextSheet("Overall notes", AR.notes||"", function(val){AR.notes=val; arSave(); renderAssess(true)});
+  };
+  document.getElementById("aCopy").onclick=function(){
+    var t=assessSummary(), msg=document.getElementById("amsg");
+    var fb=function(){openTextSheet("Write-up (select all & copy)", t, function(){})};
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText)
+        navigator.clipboard.writeText(t).then(function(){msg.textContent="Copied."},fb);
+      else fb();
+    }catch(e){fb()}
+  };
+  if(keepScroll) window.scrollTo(0,sy);
+  savebar();
+}
+function openTextSheet(title,val,cb){
+  var els=sheetEls();
+  els.sh.innerHTML='<div class="pn">'+esc(title)+'</div>'
+   +'<textarea id="tsval" style="min-height:120px">'+esc(val)+'</textarea>'
+   +'<div class="prow"><button class="tb" type="button" id="tscancel">Cancel</button>'
+   +'<button class="primary" type="button" id="tssave" style="flex:2">Save</button></div>';
+  els.sh.classList.add("on"); els.bg.classList.add("on");
+  els.sh.querySelector("#tscancel").onclick=closeSheet;
+  els.sh.querySelector("#tssave").onclick=function(){
+    var v=els.sh.querySelector("#tsval").value.trim(); closeSheet(); cb(v);
+  };
+}
+
 /* ---------- save bar ---------- */
 function savebar(){
   var bar=document.getElementById("savebar");
   if(!bar){bar=document.createElement("div"); bar.id="savebar"; document.body.appendChild(bar)}
-  if(VIEW==="log"){bar.style.display="none"; return}
+  if(VIEW==="log"||VIEW==="assess"){bar.style.display="none"; return}
   bar.style.display="";
   var when = S.savedAt ? ("Last saved "+S.savedAt) : "Not saved yet — seeded from session notes";
   var badge;
@@ -1289,6 +1468,7 @@ document.addEventListener("focusout",hideTip);
 addEventListener("scroll",hideTip,true);
 
 /* ---------- boot ---------- */
+arLoad();
 draw();
 if(HOSTED){
   claude.use("artifact").then(function(a){ api=a; if(!a){api=null} savebar() })
