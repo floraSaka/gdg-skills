@@ -366,6 +366,35 @@ select.tbsel{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spaci
 .acnote{margin-top:9px; font-size:12.5px; color:var(--ink-2); background:var(--surface-3);
   border-left:3px solid var(--navy); border-radius:4px; padding:8px 10px; line-height:1.45}
 .aout button{min-height:54px}
+
+/* ---------- at-a-glance grid: stage dots + step ladder ---------- */
+.meter{display:inline-flex; gap:3.5px; align-items:center; justify-content:center}
+.meter i{width:7px; height:7px; border-radius:50%; background:var(--rule-strong); opacity:.4}
+.meter i.on{background:var(--navy); opacity:1}
+tr.step .meter i{width:6px; height:6px; gap:3px}
+.box.dots{background:var(--surface-2)!important; background-image:none!important;
+  box-shadow:inset 0 0 0 1px var(--rule); color:var(--ink-2)}
+.box.dots.blank{background:transparent!important; box-shadow:none}
+.box.dots[data-s="na"]{background:var(--na)!important;
+  background-image:repeating-linear-gradient(45deg,transparent 0 5px,var(--nah) 5px 6px)!important;
+  color:var(--nai); font-size:10px; box-shadow:none}
+.box.dots[data-s="c"]{background:var(--carry-2)!important;
+  background-image:repeating-linear-gradient(135deg,transparent 0 4px,var(--carry) 4px 6px)!important; box-shadow:none}
+.box.dots[data-s="q"]{background:var(--amber-cell)!important; color:var(--amber); font-weight:600; box-shadow:none}
+td.cell.off .box.dots{background:var(--surface-2)!important; box-shadow:none}
+td.cell.off .meter{display:none}
+.ladder{display:inline-flex; gap:2px; align-items:center}
+.ladder i{width:7px; height:4px; border-radius:1px; background:var(--rule-strong); opacity:.45}
+.ladder i.on{background:var(--navy); opacity:1}
+.ladwrap{margin-left:auto; flex:0 0 auto; display:inline-flex; align-items:center; gap:7px; white-space:nowrap}
+.ladn{font-family:"IBM Plex Mono",monospace; font-size:10px; color:var(--ink-3)}
+.disc .skn{flex:1 1 auto; min-width:0}
+.swatch2{width:64px; display:flex; align-items:center; justify-content:flex-start; padding-top:2px}
+.pbar{display:flex; gap:2px; width:100%; height:15px; align-items:stretch; padding:0 2px}
+.pbar i{flex:1 1 0; min-width:3px; background:var(--s0); border-radius:2px; position:relative; overflow:hidden}
+.pbar i::after{content:""; position:absolute; left:0; top:0; bottom:0; width:var(--f,0); background:var(--navy)}
+tr.step .pbar{height:12px}
+.swatch3{width:104px; flex:0 0 104px; padding-top:4px}
 </style>
 </head>
 <body>
@@ -379,10 +408,6 @@ select.tbsel{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spaci
 
 <script id="seeds" type="application/json">
 {"Aki": {"dog": "Aki", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Markers & Foundation", "n": "Eye Contact Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Look", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Adaptation (Slower)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Adaptation (Quicker)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Proofing", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Markers", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Marker Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Wait for a Response", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Mark a Sit", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Foundation Cues", "n": "Sit", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Lure the Position", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Add the Cue Word", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Fade the Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Test the Word on Its Own", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Recall", "n": "Recall", "q": [0, 0, 0, 0, 0], "steps": [], "direct": {"v": [0, 0, 0, 0, 0], "notes": {}}}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Full Progression", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Treat on the Floor", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Eye Contact + Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Backwards Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Forward Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Backwards Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Forward Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Check-In Method", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Check\u2011In", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Backwards Walking (Off Lead)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Adding the Lead (Backwards Walking)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Mixing in Forward Walking (On Lead)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Check\u2011In Variation (Advanced)", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap \u00b7 Give \u00b7 Take", "n": "Swap", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Swap for a Toy", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap \u00b7 Give \u00b7 Take", "n": "Take", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Take on Cue", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 \u2018Take\u2019 as a Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 With the Flirt Pole", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap \u00b7 Give \u00b7 Take", "n": "Give", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Release", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 No Hands", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 The Game Becomes the Reward", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}, "Archie": {"dog": "Archie", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Markers & Foundation", "n": "Eye Contact Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Follow and Treat", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Wait for the Look", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Markers", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Marker Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Wait for a Response", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Mark a Sit", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Hand Touch", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Luring", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 No Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Adding the Cue", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Raising Criteria", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Taste Test", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Offer the Choice", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Work Through the Pairs", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Check It", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Use the Hierarchy", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Foundation Cues", "n": "Sit", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Lure the Position", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Add the Cue Word", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Fade the Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Test the Word on Its Own", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Foundation Cues", "n": "Down", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Lure the Position", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Add the Cue Word", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Fade the Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Test the Word on Its Own", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Retrieve", "n": "Retrieve (Two Toy)", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Play Tug First", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Introduce the Retrieve", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Add the Second Toy", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Vary the Reward", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Impulse Control", "n": "Impulse Control - To Have a Treat You Must Leave a Treat", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Closed Fist", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Raise the Difficulty", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Impulse Control", "n": "Clock Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Start at 6 o'clock", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Work 4 and 8 o'clock", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 3 and 9 o'clock: Add the Check-In", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 2 and 10 o'clock", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 12 o'clock", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Full Progression", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Treat on the Floor", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Eye Contact + Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Backwards Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Forward Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Backwards Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Forward Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap \u00b7 Give \u00b7 Take", "n": "Swap", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Swap for a Toy", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap \u00b7 Give \u00b7 Take", "n": "Give", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Release", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 No Hands", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 The Game Becomes the Reward", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap \u00b7 Give \u00b7 Take", "n": "Take", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Take on Cue", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 \u2018Take\u2019 as a Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 With the Flirt Pole", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}, "Flower": {"dog": "Flower", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Markers & Foundation", "n": "Markers", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Marker Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Wait for a Response", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Mark a Sit", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Eye Contact Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Look", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Adaptation (Slower)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Adaptation (Quicker)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Proofing", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Hand Touch", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Luring", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 No Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Adding the Cue", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Raising Criteria", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Dog Games", "n": "Find It", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Easy Finds", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Raise the Difficulty", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Tug", "n": "Tug Official Rules", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Release", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Add the \u2018Take\u2019", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 \u2018Take\u2019 as a Reward for \u2018Give\u2019", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 No Hands", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Tug as a Reward for Obedience Cues", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Settle", "n": "Settle on a Mat", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Settle on the Mat", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Place Mat Near a Chair", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Outside With a Chair", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Separation Anxiety", "n": "Flitting Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Start Flitting", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Not Following Might Pay Off", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Proofing", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Impulse Control", "n": "Impulse Control - To Have a Treat You Must Leave a Treat", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Closed Fist", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Raise the Difficulty", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Recall", "n": "Recall", "q": [0, 0, 0, 0, 0], "steps": [], "direct": {"v": [0, 0, 0, 0, 0], "notes": {}}}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Full Progression", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Treat on the Floor", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Eye Contact + Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Backwards Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Forward Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Backwards Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Forward Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}, "Fred": {"dog": "Fred", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Tug", "n": "Tug Official Rules", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Release", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Add the \u2018Take\u2019", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 \u2018Take\u2019 as a Reward for \u2018Give\u2019", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 No Hands", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Tug as a Reward for Obedience Cues", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Recall", "n": "Recall", "q": [0, 0, 0, 0, 0], "steps": [], "direct": {"v": [0, 0, 0, 0, 0], "notes": {}}}, {"cat": "Recall", "n": "Premack Recall", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Build the Distraction", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Call Him Away", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Pay Out Through You", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Vary Everything", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Swap \u00b7 Give \u00b7 Take", "n": "Swap", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Swap for a Toy", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}, "Griff": {"dog": "Griff", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Markers & Foundation", "n": "Markers", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Marker Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Wait for a Response", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Mark a Sit", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Separation Anxiety", "n": "Flitting Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Start Flitting", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Not Following Might Pay Off", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Proofing", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Toilet Training", "n": "Toilet Training", "q": [0, 0, 0, 0, 0], "steps": [], "direct": {"v": [0, 0, 0, 0, 0], "notes": {}}}, {"cat": "Equipment Conditioning", "n": "Harness Conditioning", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Introduction", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Clasp Noises", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Moving Towards the Harness", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Hold It Up", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Head Through the Loop", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Fully On, Briefly", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Building Duration", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 8 \u2014 Moving in the Harness", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Equipment Conditioning", "n": "Lead Conditioning", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Introduction", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Clip Noises", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Moving Towards the Lead", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Hold It Up", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Lead to the Ring", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Clipped On, Briefly", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Building Duration", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 8 \u2014 Moving on the Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}, "Rocki": {"dog": "Rocki", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Impulse Control", "n": "Impulse Control - To Have a Treat You Must Leave a Treat", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Closed Fist", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Raise the Difficulty", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Full Progression", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Treat on the Floor", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Eye Contact + Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Backwards Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Forward Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Backwards Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Forward Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}, "Kobe": {"dog": "Kobe", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Markers & Foundation", "n": "Markers", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Marker Pairing", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Wait for a Response", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Mark a Sit", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Eye Contact Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Follow and Treat", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Wait for the Look", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Markers & Foundation", "n": "Hand Touch", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Luring", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 No Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Adding the Cue", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Raising Criteria", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Foundation Cues", "n": "Sit", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Lure the Position", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Add the Cue Word", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Fade the Lure", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Test the Word on Its Own", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Dog Games", "n": "Find It", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Easy Finds", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Raise the Difficulty", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Settle", "n": "Settle on a Mat", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Settle on the Mat", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Place Mat Near a Chair", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Outside With a Chair", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Settle", "n": "Capturing Settle Around The House", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Capture the Calm", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Separation Anxiety", "n": "Flitting Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Start Flitting", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Not Following Might Pay Off", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Proofing", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Full Progression", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Treat on the Floor", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Eye Contact + Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Backwards Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Forward Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Backwards Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Forward Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}, "Rechka": {"dog": "Rechka", "savedAt": null, "levels": ["", "", "", "", ""], "skills": [{"cat": "Markers & Foundation", "n": "Eye Contact Game", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 The Look", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Adaptation (Slower)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Adaptation (Quicker)", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Proofing", "v": [0, 0, 0, 0, 0], "notes": {}}]}, {"cat": "Loose Lead Walking", "n": "Loose Lead Walking Full Progression", "q": [0, 0, 0, 0, 0], "steps": [{"n": "Step 1 \u2014 Treat on the Floor", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 2 \u2014 Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 3 \u2014 Eye Contact + Mark and Reward", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 4 \u2014 Backwards Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 5 \u2014 Forward Walking", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 6 \u2014 Backwards Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}, {"n": "Step 7 \u2014 Forward Walking on Lead", "v": [0, 0, 0, 0, 0], "notes": {}}]}]}}
-</script>
-
-<script id="assess" type="application/json">
-{"id": "lily-2026-08-28", "dog": "Lily", "breed": "Labradoodle", "age": "nearly 6 months", "client": "Katy Vaughan", "clientAlt": "Katy Clare", "clientEmail": "clare_katy@hotmail.com", "clientPhone": "07809152577", "assessor": "Flora Anderson", "date": "28 August 2026", "time": "2pm", "venue": "Thompson's Welling \u2014 meet at the main entrance", "settle": "The pub up the road (walk over for the settle/caf\u00e9 part)", "purpose": "Assistance dog for Katy's daughter \u2014 autism, social & mental health", "tasks": ["Deep / light pressure therapy", "Find an exit", "Alert to signs of anxiety or distress", "Interrupt episodes of self-injurious behaviour or dissociation"], "welfare": "Pawsable's instruction: taskwork a few at a time only \u2014 get one solid before introducing the next. Overloading her is a welfare risk, not just slow training. Not assessed today, but it frames the conversation.", "framing": "This checks POTENTIAL over the next 12\u201318 months, not current polish. She is a ~6-month-old puppy \u2014 she is not supposed to look finished. Never imply she needs lessons with you first in order to pass.", "runOrder": ["Walk in an unusual environment alongside the handler (Thompson's aisles + car park)", "Settle in a seating area, reasonably calmly (the pub)", "Handler goes briefly out of sight \u2014 does she cope?", "You give her a fuss \u2014 do this LAST, once you've read her temperament", "Ideally, some exposure to another dog"], "checks": [{"id": "c1", "short": "Stroked by a stranger", "text": "The dog must be happy to be stroked by a friendly stranger."}, {"id": "c2", "short": "Examined by the trainer", "text": "The dog must be comfortable being examined by the trainer; the dog will be stroked gently and then have its teeth, ears and front feet examined. At this stage it is acceptable for the dog to pull away but must not show any signs of aggression."}, {"id": "c3", "short": "Walking through a crowd", "text": "The dog must be happy to walk through a crowd, remaining under control and not jumping up or being unduly afraid."}, {"id": "c4", "short": "Around another dog", "text": "The dog must be comfortable around another dog, with no signs of aggression."}, {"id": "c5", "short": "Reacting to distractions", "text": "Reacting to distractions, eg a shopping trolley clattering, a clipboard being dropped: the dog can express curiosity or surprise and can be reassured and petted, but must not be panicked, run off or show any aggression, and must recover quickly."}, {"id": "c6", "short": "Accepting novelty", "text": "Accepting novelty or differences \u2014 when coming across an unusual object or somebody behaving or moving in an unexpected manner the dog might be unsure and want to avoid getting too close. This is normal and acceptable, but the dog should be able to relax at a distance and be inquisitive, with the potential to investigate and become accepting with correct handling. Examples: someone in a wheelchair or using a walking frame or stick, a crying child in a pram, a statue of an animal, an umbrella, someone in a high-vis jacket."}, {"id": "c7", "short": "Sits for a hug", "text": "The dog will sit comfortably while the handler and trainer give the dog a hug."}], "instantFail": "Aggression, or acute stress / fear. Nothing else on the checklist is an instant fail on its own.", "good": ["Handler has rapport and control", "Recovers fast from surprises", "Calm when touched by a stranger", "Copes briefly when left", "Wary-but-recoverable around novelty"], "concern": ["Unfocused / highly distracted on lead", "Ineffective handler", "Falls apart when owner steps away", "Fixated on other dogs"], "borderline": "Borderline is not a fail \u2014 offer a free re-assessment within 6 months. You still get paid for today.", "reminders": ["PASS \u2192 hand over the red 'in training' lead slip in person", "Pawsable would love photos/videos for their socials \u2014 only if Katy is happy", "Autistic family: stick to the plan you've shared, short simple instructions, unrushed pace, don't touch the client, skip the small talk", "Never work alone with a family member under 16", "After: write up to katie@pawsable.com \u00b7 \u00a350 + train fare to finance@pawsable.com"], "nameFlag": "Pawsable's referral says Katy VAUGHAN; her emails sign off as Katy CLARE. Check which surname she wants on the form."}
 </script>
 
 <script id="app">
@@ -542,6 +567,54 @@ function edgeInfo(sk,L){
   }
   return {sti:top, v:sk.steps[top].v[L]};
 }
+/* ---- at-a-glance rendering: ladder = how far through the steps, meter = how solid ---- */
+function ladderTop(sk){          /* furthest step reached at ANY level in use, 1-based; 0 = not started */
+  var top=0;
+  for(var s=0;s<sk.steps.length;s++){
+    var any=false;
+    for(var L=0;L<5;L++) if(levUsed(L)&&sk.steps[s].v[L]>0) any=true;
+    if(any) top=s+1;
+  }
+  return top;
+}
+function ladderHTML(sk){
+  var n=sk.steps.length;
+  if(!n) return '<span class="ladn">1 stage only</span>';
+  var top=ladderTop(sk);
+  return '<span class="ladn">'+(top?('on step '+top+' of '+n):(n+' steps · not started'))+'</span>';
+}
+function stepFills(sk,L){   /* one fill fraction per applicable step; null = wholly n/a here */
+  if(!sk.steps.length){
+    var v=sk.direct.v[L];
+    if(v===-1) return null;
+    return [v>0?v/5:0];
+  }
+  var idx=[], s;
+  for(s=0;s<sk.steps.length;s++) if(sk.steps[s].v[L]!==-1) idx.push(s);
+  if(!idx.length) return null;
+  var top=-1;
+  for(s=0;s<idx.length;s++) if(sk.steps[idx[s]].v[L]>0) top=s;
+  var fills=[];
+  for(s=0;s<idx.length;s++){
+    if(top<0) fills.push(0);
+    else if(s<top) fills.push(1);                        /* passed, or carried under the working step */
+    else if(s===top) fills.push(sk.steps[idx[s]].v[L]/5);
+    else fills.push(0);
+  }
+  return fills;
+}
+function barHTML(fills){    /* segmented bar: segments = steps, fill = stage. Full bar = Fluent at the last step */
+  var h='<span class="pbar" aria-hidden="true">';
+  for(var i=0;i<fills.length;i++) h+='<i style="--f:'+Math.round(fills[i]*100)+'%"></i>';
+  return h+'</span>';
+}
+function meterHTML(v){           /* stage 1..5 as filled dots — count carries the meaning, no colour to decode */
+  if(!(v>0)) return '';
+  var h='<span class="meter" aria-hidden="true">';
+  for(var i=1;i<=5;i++) h+='<i'+(i<=v?' class="on"':'')+'></i>';
+  return h+'</span>';
+}
+
 /* fluent at a level = the LAST applicable step (or the direct cell) is at 5 there; null = n/a-excluded */
 function skillFluentAt(sk,L){
   if(!sk.steps.length){var v=sk.direct.v[L]; return v===-1?null:(v===5)}
@@ -599,23 +672,41 @@ function skillOrder(L){
 
 /* ---------- static copy (desktop matrix) ---------- */
 function scalesHTML(){
-  var stage=[[1,"Introduced","Shown to the dog here. No expectation of a response yet."],
+  var stage=[[1,"Introduced","Shown to the dog here. No response expected yet."],
    [2,"Learning","Responds sometimes, with help — lure, body cue, repeated cue."],
-   [3,"Progressing","More often than not. Still needs setup or a reduced criterion."],
+   [3,"Progressing","More often than not. Still needs setup or an easier criterion."],
    [4,"Reliable","Does it when asked, here, without help. One cue."],
    [5,"Fluent","Fast and clean. No lure, no repeat cue, no hesitation."]];
   var h='<div class="scales">';
-  h+='<div class="scalecard"><h3>What a cell means</h3><p class="note">Four states. Skill row and step row read differently.</p>'
-   +'<div class="srow"><div class="swatch" style="background:var(--s3);color:var(--s3i)">S4</div><div><div class="sname">Skill row — colour + step code</div><div class="sdesc">The <em>furthest step scored</em> at that location, coloured by its stage. Calculated, not typed — the only thing you can set on it is N/A for the whole column.</div></div></div>'
-   +'<div class="srow"><div class="swatch" style="background:var(--s3);color:var(--s3i)">3</div><div><div class="sname">Step row — colour + stage</div><div class="sdesc">That step\'s proficiency at that location. <strong>Click any step cell to set it.</strong></div></div></div>'
-   +'<div class="srow"><div class="swatch hatch"></div><div><div class="sname">Carried</div><div class="sdesc">A lower step, assumed passed because a higher one is being worked here — your docs say <em>"do not move up a step until he is very confident with the one you are working at."</em> Never typed; set the step below it directly to override.</div></div></div>'
-   +'<div class="srow"><div class="swatch naSw">n/a</div><div><div class="sname">Not applicable</div><div class="sdesc"><strong>Can\'t</strong> be trained at this level, as opposed to hasn\'t been yet — Hand Touch on the balcony, where he can\'t be off lead. Deliberately excluded, so it stops reading as an outstanding gap. Set from the cell picker; the skill row goes n/a once every step at that level is.</div></div></div>'
-   +'<div class="srow"><div class="swatch qc">?</div><div><div class="sname">Worked here, step not recorded</div><div class="sdesc">Sessions happened at this location but the notes don\'t say which step. Score a step to clear it.</div></div></div>'
-   +'<div class="srow"><div class="swatch" style="background:var(--s0);color:var(--s0i)">·</div><div><div class="sname">Not yet tested</div><div class="sdesc">Never attempted here. Blank — the gaps are the point.</div></div></div></div>';
-  h+='<div class="scalecard"><h3>Proficiency stage</h3><p class="note">Five stages, set from the cell picker. Generalised is earned, never typed.</p>';
-  stage.forEach(function(r){h+='<div class="srow"><div class="swatch" style="background:var(--s'+r[0]+');color:var(--s'+r[0]+'i)">'+r[0]+'</div><div><div class="sname">'+r[1]+'</div><div class="sdesc">'+r[2]+'</div></div></div>'});
-  h+='<div class="srow"><div class="swatch" style="background:var(--gen);color:var(--geni)">★</div><div><div class="sname">Generalised — calculated, not set</div><div class="sdesc">A skill shows Generalised once its last step is <strong>Fluent at every level this dog has in use</strong> — two named levels means two, five means five. Fluent everywhere it can be trained: n/a levels are excluded, an untested level counts against it. There is no cell input for it.</div></div></div>';
-  h+='</div><div class="scalecard"><h3>'+esc(S.dog)+'\'s levels</h3>'
+
+  /* how to read a row — the two languages, stated once */
+  h+='<div class="scalecard"><h3>How to read a row</h3>'
+   +'<div class="srow"><div class="swatch3">'+barHTML([1,1,1,0.6,0,0,0])+'</div>'
+   +'<div><div class="sname">Skill row — one bar per place</div>'
+   +'<div class="sdesc"><strong>One segment per step</strong> of that exercise. Segments below the step you\'re working count as passed (the same carry rule as ever); the one you\'re on fills by its stage. So it reads without counting anything: <strong>a full bar means Fluent at the last step — done, here.</strong> Half full means half way. Empty means never tried here.</div></div></div>'
+   +'<div class="srow"><div class="swatch2">'+meterHTML(3)+'</div>'
+   +'<div><div class="sname">Step row — five dots for the stage</div>'
+   +'<div class="sdesc">Open a skill to see its steps. Each step shows its own stage as dots: three filled = Progressing, all five = Fluent.</div></div></div>'
+   +'<div class="srow"><div class="swatch2"><span class="ptag">★ Generalised</span></div>'
+   +'<div><div class="sname">Generalised — calculated, never typed</div>'
+   +'<div class="sdesc">All five dots at <em>every level this dog has in use</em> — two named levels means two. n/a levels are excluded; an untested one counts against it.</div></div></div>'
+   +'</div>';
+
+  /* the five stages */
+  h+='<div class="scalecard"><h3>The five stages</h3><p class="note">Set from the cell picker. Nothing above Fluent is typed.</p>';
+  stage.forEach(function(r){h+='<div class="srow"><div class="swatch2">'+meterHTML(r[0])+'</div><div><div class="sname">'+r[0]+' · '+r[1]+'</div><div class="sdesc">'+r[2]+'</div></div></div>'});
+  h+='</div>';
+
+  /* the four non-stage cells */
+  h+='<div class="scalecard"><h3>Cells that aren\'t a stage</h3>'
+   +'<div class="srow"><div class="swatch2"><span class="box dots blank" style="width:52px;height:26px"></span></div><div><div class="sname">Empty — not yet tested</div><div class="sdesc">Never attempted here. The gaps are the point.</div></div></div>'
+   +'<div class="srow"><div class="swatch hatch"></div><div><div class="sname">Carried</div><div class="sdesc">A lower step, assumed passed because a higher one is being worked here — the docs say <em>"do not move up a step until he is very confident with the one you are working at."</em> Score it directly to override.</div></div></div>'
+   +'<div class="srow"><div class="swatch naSw">n/a</div><div><div class="sname">Not applicable</div><div class="sdesc"><strong>Can\'t</strong> be trained here, as opposed to hasn\'t been — Hand Touch on the balcony, where he can\'t be off lead. Excluded so it never reads as an outstanding gap.</div></div></div>'
+   +'<div class="srow"><div class="swatch qc">?</div><div><div class="sname">Worked here, step not recorded</div><div class="sdesc">Sessions happened here but the notes don\'t say which step. Score a step to clear it.</div></div></div>'
+   +'</div>';
+
+  /* levels */
+  h+='<div class="scalecard"><h3>'+esc(S.dog)+'\'s levels</h3>'
    +'<p class="note">Up to five, easiest first. Name them for real places — <strong>type over these</strong>. Leave one blank to switch that level off.</p>';
   for(var i=0;i<5;i++){
     h+='<div class="srow"><div class="lcode">'+levCode(i)+'</div>'
@@ -624,6 +715,7 @@ function scalesHTML(){
   }
   return h+'</div></div>';
 }
+
 function flagsHTML(){
   return '<div class="stack">'
   +'<div class="callout green"><h3>Done — Loose Lead Walking is Step 4, and it\'s now a worked example</h3><p>You confirmed the lead was on because Harold has to be on one out there, and was probably just dragging. That\'s a <strong>variation, not a step</strong> — Step 6 is the lead deliberately in your hand. Recorded as a cell note on Step 4 / L2, with Step 6 carrying the distinguishing note. Exactly what the variations layer is for.</p></div>'
@@ -761,11 +853,11 @@ function buildGrid(){
     var sc=document.createElement("td"); sc.className="skillcell";
     if(stepless){
       var sp=document.createElement("div"); sp.className="disc nodisc";
-      sp.innerHTML='<span class="tri" style="visibility:hidden">▶</span><span>'+esc(sk.n)+'</span>'+ptag+'<span class="stepcount">no steps</span>';
+      sp.innerHTML='<span class="tri" style="visibility:hidden">▶</span><span class="skn">'+esc(sk.n)+'</span>'+ptag+'<span class="ladwrap">'+ladderHTML(sk)+'</span>';
       sc.appendChild(sp);
     }else{
       var btn=document.createElement("button"); btn.className="disc"; btn.type="button"; btn.setAttribute("aria-expanded","false");
-      btn.innerHTML='<span class="tri">▶</span><span>'+esc(sk.n)+'</span>'+ptag+'<span class="stepcount">'+sk.steps.length+' step'+(sk.steps.length>1?'s':'')+'</span>';
+      btn.innerHTML='<span class="tri">▶</span><span class="skn">'+esc(sk.n)+'</span>'+ptag+'<span class="ladwrap">'+ladderHTML(sk)+'</span>';
       btn.addEventListener("click",function(){toggle(tr,id)});
       sc.appendChild(btn);
     }
@@ -773,8 +865,12 @@ function buildGrid(){
     d.summary.forEach(function(c,i){
       var td=document.createElement("td"); td.className="cell"+(levUsed(i)?"":" off");
       var clickable = levUsed(i);
-      var b=document.createElement(clickable?"button":"div"); b.className="box"; b.dataset.s=c.s;
-      b.textContent=(!stepless&&/^S\d+$/.test(c.label)) ? c.label+"/"+sk.steps.length : c.label;
+      var b=document.createElement(clickable?"button":"div"); b.className="box dots"; b.dataset.s=c.s;
+      var fills=stepFills(sk,i);
+      if(c.s==="q") b.textContent="?";
+      else if(c.s==="na"||fills===null) b.textContent="n/a";
+      else if(c.s>0) b.innerHTML=barHTML(fills);
+      else { b.textContent=""; b.classList.add("blank"); }
       if(clickable){b.type="button"; b.style.cursor="pointer"; b.dataset.ski=ski; b.dataset.li=i;
         b.dataset.sti = stepless ? -1 : -2;   /* -2 = skill row of a stepped skill: N/A only */
         b.addEventListener("click",function(e){e.stopPropagation(); openPick(b)});}
@@ -801,11 +897,14 @@ function buildGrid(){
       srow.appendChild(nc);
       st.v.forEach(function(v,i){
         var td=document.createElement("td"); td.className="cell"+(levUsed(i)?"":" off");
-        var b=document.createElement(levUsed(i)?"button":"div"); if(levUsed(i)) b.type="button"; b.className="box";
+        var b=document.createElement(levUsed(i)?"button":"div"); if(levUsed(i)) b.type="button"; b.className="box dots";
         var isC = v===0 && d.carried[si][i]===1;
         var isNA = v===-1;
         b.dataset.s = isNA ? "na" : (isC ? "c" : v);
-        b.textContent = isNA ? "n/a" : (isC ? "" : (v>0?String(v):""));
+        if(isNA) b.textContent="n/a";
+        else if(isC) b.textContent="";
+        else if(v>0) b.innerHTML=meterHTML(v);
+        else { b.textContent=""; b.classList.add("blank"); }
         b.dataset.ski=ski; b.dataset.sti=si; b.dataset.li=i;
         b.dataset.k=sk.n+" · "+st.n; b.dataset.loc=levFull(i);
         b.dataset.stage = isNA ? "Not applicable here" : (isC ? "Carried — assumed passed" : STAGES[v]);
